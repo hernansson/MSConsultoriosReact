@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          ENTREGABLE NUMERO 1
+          ENTREGABLE NUMERO 12
         </p>
         <a
           className="App-link"

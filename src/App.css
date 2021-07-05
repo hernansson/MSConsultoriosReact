@@ -1,3 +1,41 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.nav {
+  background-color:grey ;
+  overflow: hidden;
+
+}
+.nav ul{
+
+ color: white;
+
+ list-style-type: none;
+ margin: 0px;
+ 
+
+
+ 
+}
+
+.nav a{
+  float:left;
+  display: block;
+ padding: 16px;
+ color: white;
+
+}
+
+/*
+*{
+  border: solid red 1px;
+}
+*/
+
+
 .App {
   text-align: center;
 }

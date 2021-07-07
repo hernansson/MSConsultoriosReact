@@ -1,17 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar.jsx';
-import ClassComponent from './components/ClassComponent';
-
+import NavBar from './components/NavBar/NavBar.jsx';
+import ClickTracker from './components/Ejercicios de clase/ClickTracker';
+import Home from './components/NavBar/pages/Home/Home';
+import Productos from './components/NavBar/pages/Productos/Productos';
 
 
 
 function App() {
   return (
-    <div className="container">
-      <NavBar />
-      <ClassComponent />
+    <div>
+      <div className="navigationBar">
+        <NavBar />
+      </div>
+
+      <div className="bodyApp">
+        <Productos />
+      </div>
+
     </div>
+
   );
 }
 

@@ -4,7 +4,7 @@ import ItemListContainer from './ItemListContainer'
 export default function Productos() {
     return (
         <div>
-            <ItemListContainer />
+            <ItemListContainer greetings="Hi, im sending you 'me'" />
         </div>
     )
 }

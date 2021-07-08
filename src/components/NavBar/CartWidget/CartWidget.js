@@ -1,4 +1,4 @@
-import cart from './img/cart.png'
+import cart from '../img/cart.png'
 import React from 'react'
 export default function CartWidget() {
     return (

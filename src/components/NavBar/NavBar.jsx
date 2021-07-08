@@ -1,6 +1,6 @@
 import React from 'react'
-import CartWidget from './CartWidget'
-import LogIn from './LogIn'
+import CartWidget from './CartWidget/CartWidget.js'
+import LogIn from './LogIn/LogIn'
 
 
 

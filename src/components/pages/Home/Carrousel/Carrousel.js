@@ -3,6 +3,7 @@ import firstImage from './img/medicaresize.jpeg'
 import secondImage from './img/herramientoResize.jpg'
 import thirdImage from './img/medicosResize.jpg'
 import fourthImage from './img/ultimaResize.jpg'
+import "../Carrousel/style.css"
 
 export default function Carrousel() {
 
@@ -43,16 +44,16 @@ export default function Carrousel() {
                 <label htmlFor="carousel-1" className="carousel-control next control-4">›</label>
                 <ol className="carousel-indicators">
                     <li>
-                        <label htmlFor="carousel-1" class="carousel-bullet">•</label>
+                        <label htmlFor="carousel-1" className="carousel-bullet">•</label>
                     </li>
                     <li>
-                        <label htmlFor="carousel-2" class="carousel-bullet">•</label>
+                        <label htmlFor="carousel-2" className="carousel-bullet">•</label>
                     </li>
                     <li>
-                        <label htmlFor="carousel-3" class="carousel-bullet">•</label>
+                        <label htmlFor="carousel-3" className="carousel-bullet">•</label>
                     </li>
                     <li>
-                        <label htmlFor="carousel-4" class="carousel-bullet">•</label>
+                        <label htmlFor="carousel-4" className="carousel-bullet">•</label>
                     </li>
                 </ol>
             </div>

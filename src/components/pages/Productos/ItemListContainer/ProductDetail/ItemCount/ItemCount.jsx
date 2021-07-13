@@ -52,7 +52,7 @@ export function ItemCount(props) {
             <ButtonCust handleClick={subCount} isEnable={enableSub} txt="-"></ButtonCust>
 
             <div>
-                <button className="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={props.update(props.stock - count)}  >
+                <button type="button" className="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={() => { props.update(props.stock - count) }}  >
                     Add to Cart
                 </button>
             </div>

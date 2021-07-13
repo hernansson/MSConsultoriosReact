@@ -8,13 +8,11 @@ export default function ProductDetail(props) {
     const [Stock, setStock] = useState(props.product.stock)
 
 
+    /*useContext*/
 
     const updateStock = (quanty) => {
-        console.log("Stock is being modify")
-        console.log(Stock)
-        setStock(quanty)
-        console.log(Stock)
 
+        setStock(quanty)
 
     }
 

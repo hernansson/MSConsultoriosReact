@@ -2,20 +2,17 @@ import React from "react"
 
 import { useState, useEffect } from "react"
 import { ItemCount } from "./ItemCount/ItemCount"
-import Button from "./ItemCount/ButtonCust"
+
 export default function ProductDetail(props) {
 
     const [Stock, setStock] = useState(props.product.stock)
 
-
     /*useContext*/
-
     const updateStock = (quanty) => {
 
         setStock(quanty)
 
     }
-
 
     return (
         <div>

@@ -1,6 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget.js'
 import LogIn from './LogIn/LogIn'
+import "./Navbar.css"
 
 
 
@@ -28,10 +30,10 @@ export default function NavBar() {
             </div>
             <div
                 className="toggle hidden w-full md:w-auto md:flex text-center text-bold mt-5 md:mt-0 border-t-2 border-blue-100 md:border-none">
-                <a href="#"
-                    className=" block md:inline-block text-blue-100 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-100 md:border-none">Home</a>
-                <a href="#"
-                    className="block md:inline-block text-blue-100 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-100 md:border-none">Products</a>
+                <NavLink to="/" activeClassName="active"
+                    className=" block md:inline-block text-blue-100 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-100 md:border-none">Home</NavLink>
+                <NavLink to="/Productos" activeClassName="active"
+                    className="block md:inline-block text-blue-100 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-100 md:border-none">Productos</NavLink>
                 <a href="#"
                     className="block md:inline-block text-blue-100 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-100 md:border-none">Pricing</a>
                 <a href="#"

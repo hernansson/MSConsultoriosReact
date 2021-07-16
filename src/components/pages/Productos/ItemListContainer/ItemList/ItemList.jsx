@@ -18,10 +18,13 @@ export default function ItemList() {
 
     }
 
+
     const fetchData = async () => {
         let call = fetch('http://localhost:4000/Products', config)
             .then(res => res.json())
-            .then(resp => setProductos(resp))
+            .then(resp => setTimeout(() => {
+                setProductos(resp)
+            }, 2000))
 
     }
     useEffect(() => {
@@ -29,14 +32,12 @@ export default function ItemList() {
             fetchData()
             ic.current = false;
         }
-    })
-
+    }, [productos])
 
     return (
         <div className="products">
             {productos.map((prod, idx) => (
                 <Item producto={prod} key={idx} />
-
             ))}
         </div >
     )

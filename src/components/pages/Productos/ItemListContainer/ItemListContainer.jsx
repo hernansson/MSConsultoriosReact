@@ -6,6 +6,7 @@ import ItemList from './ItemList/ItemList'
 
 
 
+
 export default function ItemListContainer(props) {
 
 
@@ -14,8 +15,6 @@ export default function ItemListContainer(props) {
             <h1>{props.greetings}</h1>
 
             <ItemList />
-
-
 
         </div >
     )

@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./DropDownProducts.css"
 export default function DropDownProducts() {
 
@@ -26,13 +26,19 @@ export default function DropDownProducts() {
         className="bg-blue-100 border rounded-lg transform scale-0 group-hover:scale-100 absolute
   transition duration-350 ease-in-out min-w-32"
       >
-        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left ">Cremas Corporales</li>
-        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left">Higiene Capilar</li>
+        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left ">
+          <NavLink to="/Productos/Categoria/CremasCorporales" activeClassName='activo'>Cremas Corporales</NavLink>
+        </li>
+        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left">
+          <NavLink to="/Productos/Categoria/HigieneCapilar" activeClassName='activo'>Higiene Capilar</NavLink>
+        </li>
         <li className="rounded-sm relative px-4 py-2 hover:bg-gray-100">
           <button
             className="w-full text-left flex items-center outline-none focus:outline-none"
           >
-            <span className="pr-1 flex-1">Analgesicos</span>
+            <span className="pr-1 flex-1">
+              <NavLink to="/Productos/Categoria/Analgesico" activeClassName='activo'>Analgesico</NavLink>
+            </span>
             <span className="mr-auto">
               <svg
                 className="fill-current h-4 w-4
@@ -83,7 +89,9 @@ export default function DropDownProducts() {
             </li>
           </ul>
         </li>
-        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left">Proteccion Sexual</li>
+        <li className="rounded-sm px-4 py-2 hover:bg-gray-100  text-left">
+          <NavLink to="/Productos/Categoria/ProteccionSexual" activeClassName='activo'>Proteccion Sexual</NavLink>
+        </li>
       </ul>
     </div>
 

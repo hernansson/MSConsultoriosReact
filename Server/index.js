@@ -6,7 +6,7 @@ const port = 4000
 
 app.use(cors());
 app.get('/products', (req, res) => {
-    var json = fs.readFileSync('./list.json',"utf8",(err,content) =>{
+    var json = fs.readFileSync('./list.json', "utf8", (err, content) => {
         if (err) {
             console.log(err);
         } else {
@@ -16,19 +16,19 @@ app.get('/products', (req, res) => {
     });
     console.log(json);
     res.send(json)
-    
 
-   // res.send(json);
+
+    // res.send(json);
     //res.send(JSON.stringify(data));
 
 })
-app.get('/product/:id', (req,res) => {
+app.get('/product/:id', (req, res) => {
     let id = req.params.id;
-    console.log(req.params.id); 
-   // id = id.substring(1);
+    console.log(req.params.id);
+    // id = id.substring(1);
     console.log(id);
-   var json = fs.readFileSync('./list.json',"utf8",(err,content) =>{
-       err ? console.log(err):JSON.parse(content);
+    var json = fs.readFileSync('./list.json', "utf8", (err, content) => {
+        err ? console.log(err) : JSON.parse(content);
     });
 
     json = JSON.parse(json);
@@ -37,18 +37,19 @@ app.get('/product/:id', (req,res) => {
     res.send(json);
 
 })
-app.get('/product/category/:categoryID', (req,res) => {
+app.get('/product/category/:categoryID', (req, res) => {
     console.log('estamos Seleccion de categorias');
     let categoria = req.params.categoryID;
     //categoria = id.substring(1);
-    console.log(categoria);
-   var json = fs.readFileSync('./list.json',"utf8",(err,content) =>{
-       err ? console.log(err):JSON.parse(content);
+    console.log("La categoria es:", categoria);
+    var json = fs.readFileSync('./list.json', "utf8", (err, content) => {
+        err ? console.log(err) : JSON.parse(content);
     });
 
     json = JSON.parse(json);
+
     json = json.filter(filter => filter.categoria == categoria);
-    console.log(json);
+    console.log("DESPUES DEL FILTER", json);
     res.send(json);
 
 })

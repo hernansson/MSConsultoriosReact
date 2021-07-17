@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import Item from './Item/Item';
 import "./ItemListContainer.css"
+import { Link } from 'react-router-dom';
 export default function ItemListContainer() {
 
     const ic = useRef(true);
@@ -24,6 +25,7 @@ export default function ItemListContainer() {
         let call = fetch('http://localhost:4000/Products', config)
             .then(res => res.json())
             .then(resp => setTimeout(() => {
+                console.log(resp)
                 setProductos(resp)
             }, 0))
     }
@@ -39,7 +41,7 @@ export default function ItemListContainer() {
         <div className="productContainer">
             <div className="products">
                 {productos.map((prod, idx) => (
-                    <Item producto={prod} key={idx} />
+                    <Link to={`/Detalle/${prod.title}/${prod.id}`}><Item producto={prod} key={idx} /></Link>
                 ))}
             </div>
         </div>

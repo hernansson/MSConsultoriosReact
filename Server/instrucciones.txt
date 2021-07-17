@@ -1,19 +1,25 @@
-Abrir la consola dentro de \Server
+instalar la API
+*abrir consola dentro de la carpeta SERVER
+escribir: npm install
+esperar que se instale los modulos
+escribir: nodemon
+#escribir nodemon  inicia la api en el puerto 4000 de su PC
 
-Ejecutar en la consola: npm install
-una vez se bajen los paquetes
-Ejecutar en la consola:npm install nodemon
-Ejecutar en la consola:nodemon
+Llamadas a las API
 
-deberia aparecerles lo siguiente.
+#OBTENER TODOS LOS PRODUCTOS DE LA LISTA
+#NO RECIBE PARAMETROS
+http://localhost:4000/products
 
-[nodemon] 2.0.7
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,json
-[nodemon] starting `node index.js`
-Example app listening on port port!
+#OBTENER UN PRODUCTO DE LA LISTA
+#RECIBE EL ID DEL PRODUCTO A BUSCAR
+http://localhost:4000/product/:id
+EJEMPLO: http://localhost:4000/product/1
 
-La data la consume del List.json
+#OBTENER PRODUCTOS CON UNA CATEGORIA ESPECIFICA
+#RECIBE LA CATEGORIA DEL PRODUCTO A BUSCAR
+http://localhost:4000/product/category/:categoryID
+EJEMPLO: http://localhost:4000/product/category/Procesadores
 
-Happy hacking!!
+
+

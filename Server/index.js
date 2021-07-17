@@ -22,4 +22,34 @@ app.get('/products', (req, res) => {
     //res.send(JSON.stringify(data));
 
 })
-app.listen(port, () => console.log(`Example app listening on port port!`))
+app.get('/product/:id', (req,res) => {
+    let id = req.params.id;
+    console.log(req.params.id); 
+   // id = id.substring(1);
+    console.log(id);
+   var json = fs.readFileSync('./list.json',"utf8",(err,content) =>{
+       err ? console.log(err):JSON.parse(content);
+    });
+
+    json = JSON.parse(json);
+    json = json.filter(filter => filter.id == id);
+    console.log(json);
+    res.send(json);
+
+})
+app.get('/product/category/:categoryID', (req,res) => {
+    console.log('estamos Seleccion de categorias');
+    let categoria = req.params.categoryID;
+    //categoria = id.substring(1);
+    console.log(categoria);
+   var json = fs.readFileSync('./list.json',"utf8",(err,content) =>{
+       err ? console.log(err):JSON.parse(content);
+    });
+
+    json = JSON.parse(json);
+    json = json.filter(filter => filter.categoria == categoria);
+    console.log(json);
+    res.send(json);
+
+})
+app.listen(port, () => console.log(`Example app listening on ${port} port!`))

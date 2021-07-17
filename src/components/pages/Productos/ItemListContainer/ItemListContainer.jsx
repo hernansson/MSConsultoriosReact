@@ -1,21 +1,48 @@
-import React from 'react'
-import ProductDetail from './ProductDetail/ProductDetail'
-import "../ItemListContainer/style.css"
-import { useState } from 'react'
-import ItemList from './ItemList/ItemList'
+import React from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Item from './Item/Item';
+import "./ItemListContainer.css"
+export default function ItemListContainer() {
+
+    const ic = useRef(true);
+    const [productos, setProductos] = useState([]);
+
+    const config = {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow'
+
+    }
 
 
+    const fetchData = () => {
+        let call = fetch('http://localhost:4000/Products', config)
+            .then(res => res.json())
+            .then(resp => setTimeout(() => {
+                setProductos(resp)
+            }, 0))
+    }
 
-
-export default function ItemListContainer(props) {
-
+    useEffect(() => {
+        if (ic.current) {
+            fetchData()
+            ic.current = false;
+        }
+    }, [productos])
 
     return (
-        <div className="itemListContainer">
-            <h1>{props.greetings}</h1>
-
-            <ItemList />
-
-        </div >
+        <div className="productContainer">
+            <div className="products">
+                {productos.map((prod, idx) => (
+                    <Item producto={prod} key={idx} />
+                ))}
+            </div>
+        </div>
     )
+
 }

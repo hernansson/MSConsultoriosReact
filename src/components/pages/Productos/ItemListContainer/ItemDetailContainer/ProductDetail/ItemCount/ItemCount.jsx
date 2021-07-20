@@ -1,6 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import ButtonCust from "./ButtonCust"
+import AddCart from "../AddCart/AddCart"
 export default function ItemCount(props) {
 
     const [count, setCount] = useState(0)
@@ -43,10 +44,7 @@ export default function ItemCount(props) {
 
     }
 
-    const upd = () => {
-        props.update(props.stock - count)
-        setCount(0)
-    }
+
 
 
 
@@ -59,9 +57,7 @@ export default function ItemCount(props) {
             <ButtonCust handleClick={subCount} isEnable={enableSub} txt="-"></ButtonCust>
 
             <div>
-                <button type="button" className="bg-red-400 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onClick={upd}  >
-                    Add to Cart
-                </button>
+                <AddCart stock={props.stock} count={count} update={props.update} setCount={setCount} />
             </div>
         </div >
     )

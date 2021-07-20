@@ -19,7 +19,7 @@ export default function NavBar() {
 
     return (
 
-        <nav className="flex flex-wrap items-center justify-between p-3 bg-blue-900 w-full fixed z-20">
+        <nav className="flex  items-center justify-between p-3 bg-blue-900 w-full fixed z-20">
             <img src="http://acmelogos.com/images/logo-1.svg" alt="ACME" width="120" />
             <div className="flex md:hidden">
                 <button id="hamburger">
@@ -29,8 +29,7 @@ export default function NavBar() {
                         width="40" height="40" />
                 </button>
             </div>
-            <div
-                className="toggle hidden w-full   md:w-auto md:flex ">
+            <div className="toggle hidden w-full   md:w-auto md:flex ">
                 <NavLink to="/" activeClassName="active"
                     className=" block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Home</NavLink>
                 <DropDownProducts />
@@ -38,7 +37,6 @@ export default function NavBar() {
                     className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Turnos</a>
                 <a href="#"
                     className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Contacto</a>
-
             </div>
             <div className="flex flex-row ">
 

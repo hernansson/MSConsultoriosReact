@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import { useState, useEffect, useRef } from 'react'
 import Item from '../ItemListContainer/Item/Item'
 import { Link } from 'react-router-dom'
+import Loading from '../../../Loading/Loading'
 
 
 export default function Categories() {
@@ -10,7 +11,9 @@ export default function Categories() {
     const [categories, setCategories] = useState([]);
     const { categoriaID } = useParams();
 
+
     let initialRender = useRef(true);
+    let fetchStatus = useRef(false);
 
     const config = {
         method: 'GET',
@@ -32,27 +35,37 @@ export default function Categories() {
                 //Pedido en un desafio a entregar
                 setTimeout(() => {
                     console.log(dataJson)
+                    fetchStatus.current = true
                     setCategories(dataJson)
-                }, 2000)
+                    fetchStatus.current = false
+                }, 3000)
             )
     }
 
     useEffect(() => {
         if (initialRender) {
-
             getCategories()
             initialRender = false;
         }
     }, [categoriaID])
 
     return (
-        <div className="productContainer">
-            <div className="products">
-                {categories.map((cat, idx) => (
-                    <Item producto={cat} key={idx}><Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
+        <div >
+            {console.log("LALALALALA", categories.length)}
 
-                ))}
-            </div>
+            {fetchStatus.current == false ?
+                <div className="loading">
+                    <Loading />
+                </div> :
+                <div className="products">
+                    {categories.map((cat, idx) => (
+                        <Item producto={cat} key={idx}><Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
+
+                    ))}
+
+                </div>
+            }
+
         </div>
     )
 }

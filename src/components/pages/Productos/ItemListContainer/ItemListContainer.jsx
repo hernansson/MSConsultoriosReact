@@ -3,9 +3,11 @@ import { useEffect, useState, useRef } from 'react';
 import Item from './Item/Item';
 import "./ItemListContainer.css"
 import { Link } from 'react-router-dom';
+import Loading from '../../../Loading/Loading';
 export default function ItemListContainer() {
 
     const ic = useRef(true);
+    let fetchStatus = useRef(false);
     const [productos, setProductos] = useState([]);
 
     const config = {
@@ -26,8 +28,10 @@ export default function ItemListContainer() {
             .then(res => res.json())
             .then(resp => setTimeout(() => {
                 console.log(resp)
+                fetchStatus.current = true
                 setProductos(resp)
-            }, 0))
+                fetchStatus.current = false
+            }, 3000))
     }
 
     useEffect(() => {
@@ -39,10 +43,18 @@ export default function ItemListContainer() {
 
     return (
 
-        <div className="products">
-            {productos.map((prod, idx) => (
-                <Item producto={prod} key={idx} />
-            ))}
+        <div>
+            {fetchStatus.current == false ?
+                <div className="loading">
+
+                    <Loading />
+                </div> :
+                <div className="products">
+                    {productos.map((prod, idx) => (
+                        < Item producto={prod} key={idx} />
+                    ))}
+                </div>
+            }
         </div>
     )
 

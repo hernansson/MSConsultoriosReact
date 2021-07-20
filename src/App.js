@@ -6,6 +6,7 @@ import Home from './components/pages/Home/Home'
 import Productos from './components/pages/Productos/Productos';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Categories from './components/pages/Productos/Categories/Categories';
+import ItemDetailContainer from './components/pages/Productos/ItemListContainer/ItemDetailContainer/ItemDetailContainer';
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route exact path={'/'} exact component={Home} />
           <Route exact path={'/Productos'} exact component={Productos} />
           <Route path={'/Productos/Categoria/:categoriaID'} exact component={Categories} />
+          <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
         </Switch>
       </div>
     </BrowserRouter>

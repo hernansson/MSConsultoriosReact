@@ -1,14 +1,19 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { useState, useEffect, useRef } from 'react'
-import Item from '../ItemListContainer/Item/Item'
+
 import { Link } from 'react-router-dom'
+import ItemDetail from './ProductDetail/ItemDetail';
 
 
-export default function Categories() {
+export default function ItemDetailContainer() {
 
-    const [categories, setCategories] = useState([]);
-    const { categoriaID } = useParams();
+
+
+
+    const [itemDetail, setItemDetail] = useState([]);
+    const { iD } = useParams();
+    const { title } = useParams();
 
     let initialRender = useRef(true);
 
@@ -24,15 +29,15 @@ export default function Categories() {
 
     }
 
-    const getCategories = () => {
+    const getItemDetail = () => {
 
-        let call = fetch(`http://localhost:4000/product/category/${categoriaID}`, config)
+        let call = fetch(`http://localhost:4000/product/${iD}`, config)
             .then(data => data.json())
             .then(dataJson =>
                 //Pedido en un desafio a entregar
                 setTimeout(() => {
                     console.log(dataJson)
-                    setCategories(dataJson)
+                    setItemDetail(dataJson)
                 }, 2000)
             )
     }
@@ -40,19 +45,20 @@ export default function Categories() {
     useEffect(() => {
         if (initialRender) {
 
-            getCategories()
+            getItemDetail()
             initialRender = false;
         }
-    }, [categoriaID])
+    }, [iD])
 
     return (
-        <div className="productContainer">
-            <div className="products">
-                {categories.map((cat, idx) => (
-                    <Item producto={cat} key={idx}><Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
+        <div className="Itemdetail py-20">
 
-                ))}
-            </div>
+
+            {itemDetail.map((item) => (
+                <ItemDetail item={item} />
+            ))}
+
+
         </div>
     )
 }

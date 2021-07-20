@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import ButtonCust from "./ButtonCust"
-export function ItemCount(props) {
+export default function ItemCount(props) {
 
     const [count, setCount] = useState(0)
     /*   const [enableAdd, setEnableAdd] = useState(true)

@@ -38,12 +38,11 @@ export default function ItemListContainer() {
     }, [productos])
 
     return (
-        <div className="productContainer">
-            <div className="products">
-                {productos.map((prod, idx) => (
-                    <Link to={`/Detalle/${prod.title}/${prod.id}`}><Item producto={prod} key={idx} /></Link>
-                ))}
-            </div>
+
+        <div className="products">
+            {productos.map((prod, idx) => (
+                <Item producto={prod} key={idx} />
+            ))}
         </div>
     )
 

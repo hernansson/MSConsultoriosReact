@@ -29,7 +29,7 @@ export default function Categories() {
 
     const getCategories = () => {
 
-        let call = fetch(`http://localhost:4000/product/category/${categoriaID}`, config)
+        fetch(`http://localhost:4000/product/category/${categoriaID}`, config)
             .then(data => data.json())
             .then(dataJson =>
                 //Pedido en un desafio a entregar
@@ -47,7 +47,7 @@ export default function Categories() {
             getCategories()
             initialRender = false;
         }
-    }, [categoriaID])
+    }, [])
 
     return (
         <div >
@@ -59,7 +59,7 @@ export default function Categories() {
                 </div> :
                 <div className="products">
                     {categories.map((cat, idx) => (
-                        <Item producto={cat} key={idx}><Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
+                        <Item producto={cat} key={idx}> <Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
 
                     ))}
 

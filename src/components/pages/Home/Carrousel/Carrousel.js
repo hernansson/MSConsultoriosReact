@@ -16,22 +16,22 @@ export default function Carrousel() {
                 <input className="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="true"
                     defaultChecked="checked"></input>
                 <div className="carousel-item ">
-                    <img src={firstImage} />
+                    <img src={firstImage} alt="No content" />
                 </div>
 
                 <input className="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="true"></input>
                 <div className="carousel-item">
-                    <img src={secondImage} />
+                    <img src={secondImage} alt="No content" />
                 </div>
 
                 <input className="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="true"></input>
                 <div className="carousel-item">
-                    <img src={thirdImage} />
+                    <img src={thirdImage} alt="No content" />
                 </div>
 
                 <input className="carousel-open" type="radio" id="carousel-4" name="carousel" aria-hidden="true" hidden="true"></input>
                 <div className="carousel-item">
-                    <img src={fourthImage} />
+                    <img src={fourthImage} alt="No content" />
                 </div>
 
                 <label htmlFor="carousel-4" className="carousel-control prev control-1">‹</label>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { useState, useEffect, useRef } from 'react'
-
-import { Link } from 'react-router-dom'
 import ItemDetail from './ProductDetail/ItemDetail';
 
 

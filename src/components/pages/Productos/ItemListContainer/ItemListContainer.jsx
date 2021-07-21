@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import Item from './Item/Item';
 import "./ItemListContainer.css"
-import { Link } from 'react-router-dom';
 import Loading from '../../../Loading/Loading';
 export default function ItemListContainer() {
 
@@ -24,7 +23,7 @@ export default function ItemListContainer() {
 
 
     const fetchData = () => {
-        let call = fetch('http://localhost:4000/Products', config)
+        fetch('http://localhost:4000/Products', config)
             .then(res => res.json())
             .then(resp => setTimeout(() => {
                 console.log(resp)
@@ -39,8 +38,9 @@ export default function ItemListContainer() {
             fetchData()
             ic.current = false;
         }
-    }, [productos])
 
+    }, [productos])
+    //preguntar aca arriba
     return (
 
         <div>
@@ -53,6 +53,7 @@ export default function ItemListContainer() {
                     {productos.map((prod, idx) => (
                         < Item producto={prod} key={idx} />
                     ))}
+
                 </div>
             }
         </div>

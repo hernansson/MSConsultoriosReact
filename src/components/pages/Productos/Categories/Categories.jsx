@@ -59,7 +59,7 @@ export default function Categories() {
                 </div> :
                 <div className="products">
                     {categories.map((cat, idx) => (
-                        <Item producto={cat} key={idx}> <Link to={`/Detalle/${cat.title}/${cat.id}`} /></Item>
+                        <Item producto={cat} key={idx}> </Item>
 
                     ))}
 

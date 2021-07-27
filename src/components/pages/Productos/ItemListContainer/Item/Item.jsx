@@ -1,20 +1,16 @@
 import React from 'react'
-import ItemCount from '../ItemDetailContainer/ProductDetail/ItemCount/ItemCount.jsx'
-import { useState } from 'react'
+
+
 import { Link } from 'react-router-dom'
 import "./Item.css"
 
 
 export default function Item(data) {
 
-    const [Stock, setStock] = useState(data.producto.stock)
+
 
     /*useContext*/
-    const updateStock = (quanty) => {
 
-        setStock(quanty)
-
-    }
 
     return (
 
@@ -55,9 +51,7 @@ export default function Item(data) {
                 <div className="flex justify-center items-center ">
 
 
-                    <button className=" whitespace-nowrap rounded-3xl bg-white hover:bg-gray-100 text-teal-500 border-4 border-red-600 hover:border-green-400 px-3 py-2  uppercase  font-medium">
-                        <ItemCount update={updateStock} stock={Stock} />
-                    </button>
+
                 </div>
             </div>
 

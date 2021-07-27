@@ -11,7 +11,7 @@ export default function ItemDetailContainer() {
 
     const [itemDetail, setItemDetail] = useState([]);
     const { iD } = useParams();
-    const { title } = useParams();
+    
 
     let initialRender = useRef(true);
 

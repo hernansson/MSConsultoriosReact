@@ -44,15 +44,17 @@ export default function ItemListContainer() {
     return (
 
         <div>
+            {console.log("fetchsatus en loading",fetchStatus.current)}
             {fetchStatus.current == false ?
                 <div className="loading">
-
+                    
                     <Loading />
                 </div> :
                 <div className="products">
                     {productos.map((prod, idx) => (
                         < Item producto={prod} key={idx} />
                     ))}
+                    {console.log("fetchsatus en loading",fetchStatus.current)}
 
                 </div>
             }

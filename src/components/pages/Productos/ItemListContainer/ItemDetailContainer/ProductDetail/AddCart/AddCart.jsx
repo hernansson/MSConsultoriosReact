@@ -5,6 +5,7 @@ export default function AddCart(props) {
     const upd = () => {
         props.update(props.stock - props.count)
         props.setCount(0)
+        props.setShow(true)
     }
 
     return (

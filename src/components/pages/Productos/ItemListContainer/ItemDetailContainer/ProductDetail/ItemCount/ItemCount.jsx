@@ -4,27 +4,27 @@ import ButtonCust from "./ButtonCust"
 import AddCart from "../AddCart/AddCart"
 export default function ItemCount(props) {
 
-    const [count, setCount] = useState(0)
+    
 
     let enableAdd = true;
     let enableSub = true;
 
     const addCount = () => {
-        console.log("el count es", count)
-        if (count > (props.stock - 1)) {
+        console.log("el count es", props.count)
+        if (props.count > (props.stock - 1)) {
             enableAdd = false
         } else {
-            setCount(count + 1)
+            props.setCount(props.count + 1)
 
 
         }
 
     }
     const subCount = () => {
-        if (count === 0) {
+        if (props.count === 0) {
             enableSub = false
         } else {
-            setCount(count - 1)
+            props.setCount(props.count - 1)
 
 
         }
@@ -35,11 +35,11 @@ export default function ItemCount(props) {
     return (
         <div>
             <ButtonCust handleClick={addCount} isEnable={enableAdd} txt="+"></ButtonCust>
-            <input className="text-center" readOnly={true} value={count} />
+            <input className="text-center" readOnly={true} value={props.count} />
             <ButtonCust handleClick={subCount} isEnable={enableSub} txt="-"></ButtonCust>
 
             <div>
-                <AddCart stock={props.stock} count={count} update={props.update} setCount={setCount} />
+                <AddCart stock={props.stock} count={props.count} update={props.update} setCount={props.setCount} setShow={props.setShow} />
             </div>
         </div >
     )

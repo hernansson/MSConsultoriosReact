@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import ItemCount from './ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import CartContext from '../../../../../Context/CartContext'
 
 
 export default function ItemDetail(props) {
@@ -9,6 +11,9 @@ export default function ItemDetail(props) {
     const [stock,setStock] = useState(props.item.stock)
     const [count, setCount] = useState(0)
     const [show,setShow] = useState(false)
+
+    const {addItem,cartCount, setCartCount} = useContext(CartContext)
+    
 
     const updateStock = (quanty) => {
 
@@ -93,7 +98,7 @@ export default function ItemDetail(props) {
                             
                         </div>
                         <div>
-                            <ItemCount stock={stock} update={updateStock} setCount={setCount} setShow={setShow} count={count}/>
+                            <ItemCount stock={stock} update={updateStock} setCount={setCount} setShow={setShow} count={count} addItem={addItem} item={props.item} cartCount={cartCount} setCartCount={setCartCount}/>
                         </div>
                         <div>
                         {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null }

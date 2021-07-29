@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { useState, useEffect, useRef } from 'react'
 import Item from '../ItemListContainer/Item/Item'
-import { Link } from 'react-router-dom'
 import Loading from '../../../Loading/Loading'
 
 
@@ -11,8 +10,6 @@ export default function Categories() {
     const [categories, setCategories] = useState([]);
     const { categoriaID } = useParams();
 
-
-    let initialRender = useRef(true);
     let fetchStatus = useRef(false);
 
     const config = {
@@ -33,25 +30,23 @@ export default function Categories() {
             .then(data => data.json())
             .then(dataJson =>
                 //Pedido en un desafio a entregar
-                setTimeout(() => {
-                    console.log(dataJson)
-                    fetchStatus.current = true
-                    setCategories(dataJson)
-                    fetchStatus.current = false
-                }, 3000)
+                setTimeout(() => {  
+                    fetchStatus.current = true                                    
+                    setCategories(dataJson)  
+                                
+                }, 0)
             )
     }
 
     useEffect(() => {
-        if (initialRender) {
-            getCategories()
-            initialRender = false;
+    
+           getCategories()
+
         }
-    }, [])
+    , [categoriaID])
 
     return (
         <div >
-            {console.log("LALALALALA", categories.length)}
 
             {fetchStatus.current == false ?
                 <div className="loading">

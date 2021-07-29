@@ -39,7 +39,7 @@ export default function ItemCount(props) {
             <ButtonCust handleClick={subCount} isEnable={enableSub} txt="-"></ButtonCust>
 
             <div>
-                <AddCart stock={props.stock} count={props.count} update={props.update} setCount={props.setCount} setShow={props.setShow} />
+                <AddCart stock={props.stock} count={props.count} update={props.update} setCount={props.setCount} setShow={props.setShow} addItem={props.addItem} item={props.item} cartCount={props.cartCount} setCartCount={props.setCartCount}/>
             </div>
         </div >
     )

@@ -28,23 +28,22 @@ export default function ItemListContainer() {
             .then(resp => setTimeout(() => {
                 console.log(resp)
                 fetchStatus.current = true
+                console.log("seteo fetch en",fetchStatus.current)
                 setProductos(resp)
-                fetchStatus.current = false
+                
             }, 3000))
     }
 
     useEffect(() => {
-        if (ic.current) {
-            fetchData()
-            ic.current = false;
-        }
-
-    }, [productos])
+       
+            fetchData();
+            
+    }, [])
     //preguntar aca arriba
     return (
 
         <div>
-            {console.log("fetchsatus en loading",fetchStatus.current)}
+            {console.log("el fetch stats en laoding es :",fetchStatus.current)}
             {fetchStatus.current == false ?
                 <div className="loading">
                     
@@ -54,7 +53,7 @@ export default function ItemListContainer() {
                     {productos.map((prod, idx) => (
                         < Item producto={prod} key={idx} />
                     ))}
-                    {console.log("fetchsatus en loading",fetchStatus.current)}
+                    
 
                 </div>
             }

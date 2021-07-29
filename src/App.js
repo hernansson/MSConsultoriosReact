@@ -21,8 +21,7 @@ function App() {
           <Route exact path={'/Productos'} exact component={Productos} />
           <Route path={'/Productos/Categoria/:categoriaID'} exact component={Categories} />
           <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
-          <Route exact path={'/Cart'} exact component={Cart} />
-
+          <Route exact path={'/Cart'} exact component={Cart} />        
         </Switch>
       </div>
       </CustomProvider>

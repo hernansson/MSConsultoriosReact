@@ -6,22 +6,22 @@ import { useContext } from 'react'
 import CartContext from '../../../../../Context/CartContext'
 
 
-export default function ItemDetail({item}) {
+export default function ItemDetail({ item }) {
     console.log(item)
-    const [stock,setStock] = useState(item.stock)
+    const [stock, setStock] = useState(item.stock)
     const [count, setCount] = useState(0)
-    const [show,setShow] = useState(false)
+    const [show, setShow] = useState(false)
 
-    const {addItem,cartCount, setCartCount} = useContext(CartContext)
+    const { addItem, cartCount, setCartCount } = useContext(CartContext)
 
-    const onAdd = ()=>{
+    const onAdd = () => {
         updateStock(stock - count)
         setCount(0)
         setShow(true)
-        addItem(item,count)
-        setCartCount(cartCount + count)
+        addItem(item, count)
+
     }
-    
+
 
     const updateStock = (quanty) => {
 
@@ -103,13 +103,13 @@ export default function ItemDetail({item}) {
                         </div>
                         <div className="flex">
                             <span className="title-font font-medium text-2xl text-gray-900">${item.price}</span>
-                            
+
                         </div>
                         <div>
-                            <ItemCount value={{stock,onAdd,setCount,count}} />
+                            <ItemCount value={{ stock, onAdd, setCount, count }} />
                         </div>
                         <div>
-                        {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null }
+                            {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null}
                         </div>
                     </div>
                 </div>

@@ -6,13 +6,21 @@ import { useContext } from 'react'
 import CartContext from '../../../../../Context/CartContext'
 
 
-export default function ItemDetail(props) {
-
-    const [stock,setStock] = useState(props.item.stock)
+export default function ItemDetail({item}) {
+    console.log(item)
+    const [stock,setStock] = useState(item.stock)
     const [count, setCount] = useState(0)
     const [show,setShow] = useState(false)
 
     const {addItem,cartCount, setCartCount} = useContext(CartContext)
+
+    const onAdd = ()=>{
+        updateStock(stock - count)
+        setCount(0)
+        setShow(true)
+        addItem(item,count)
+        setCartCount(cartCount + count)
+    }
     
 
     const updateStock = (quanty) => {
@@ -26,11 +34,11 @@ export default function ItemDetail(props) {
     return (
         <section className="text-gray-600 body-font overflow-hidden  ">
             <div className="container px-5 py-24 mx-auto">
-                <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                    <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={props.item.image} />
-                    <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <div className="mx-auto lg:w-4/5  flex flex-wrap">
+                    <img alt="ecommerce" className="mx-auto lg:w-1/2 w-64 lg:h-auto h-64 object-cover object-center rounded" src={item.image} />
+                    <div className=" lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">Suzuu Company</h2>
-                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{props.item.title}</h1>
+                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.title}</h1>
                         <div className="flex mb-4">
                             <span className="flex items-center">
                                 <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -68,7 +76,7 @@ export default function ItemDetail(props) {
                                 </a>
                             </span>
                         </div>
-                        <p className="leading-relaxed">{props.item.descripcion}</p>
+                        <p className="leading-relaxed">{item.descripcion}</p>
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             <div className="flex">
                                 <span className="mr-3">Color</span>
@@ -94,11 +102,11 @@ export default function ItemDetail(props) {
                             </div>
                         </div>
                         <div className="flex">
-                            <span className="title-font font-medium text-2xl text-gray-900">${props.item.price}</span>
+                            <span className="title-font font-medium text-2xl text-gray-900">${item.price}</span>
                             
                         </div>
                         <div>
-                            <ItemCount stock={stock} update={updateStock} setCount={setCount} setShow={setShow} count={count} addItem={addItem} item={props.item} cartCount={cartCount} setCartCount={setCartCount}/>
+                            <ItemCount value={{stock,onAdd,setCount,count}} />
                         </div>
                         <div>
                         {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null }

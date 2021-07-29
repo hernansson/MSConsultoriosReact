@@ -4,29 +4,52 @@ import { useContext } from "react"
 import CartContext from "../../Context/CartContext"
 import { useEffect } from "react"
 import Item from "../Productos/ItemListContainer/Item/Item.jsx"
-
+import CartItem from "./CartItem/CartItem"
+import CartCheckOut from "./CartItem/CartCheckOut"
 
 export default function Cart(){
 
-    const {cartItems} = useContext(CartContext)
+    const {cartItems, cartCount} = useContext(CartContext)
+    
     console.log(cartItems)
 
     useEffect (()=>{
 
     },[cartItems])
 
-    return(
-        <div className="cartContainer">
-            {cartItems.map((x)=>(
-                <div> {`La cantidad comprada es: ${x.count}`}
-                {`La cantidad comprada es: ${x.item.title}`}
-                {`La cantidad comprada es: ${x.item.descripcion}`}
-                <img src={x.item.image} alt="" />
-
-               
-                </div>)
-               
-            )}
+    return(  
+    
+    <div class="container mx-auto ">
+    <div class="flex shadow-md ">
+      <div class="w-3/4 bg-red px-10 py-28">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="font-semibold text-2xl">Carrito de compras</h1>
+          <h2 class="font-semibold text-2xl">{`${cartCount} Productos`}</h2>
         </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalle de los produtos</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+        </div>
+        
+        {cartItems.map((e)=>(
+            <CartItem CartItem={e.item} ItemQ={e.count} />
+        ))}
+        
+        
+
+        <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
+      
+          <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+          Seguir Comprando
+        </a>
+      </div>
+      <div id="summary" class="w-1/4 px-8 py-28 bg-gray-100">
+        <CartCheckOut></CartCheckOut>
+        </div>
+    </div>
+  </div>
+
     )
 }

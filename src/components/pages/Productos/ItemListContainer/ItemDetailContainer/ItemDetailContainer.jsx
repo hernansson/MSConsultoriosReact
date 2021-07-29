@@ -53,6 +53,7 @@ export default function ItemDetailContainer() {
 
 
             {itemDetail.map((item) => (
+ 
                 <ItemDetail item={item} />
             ))}
 

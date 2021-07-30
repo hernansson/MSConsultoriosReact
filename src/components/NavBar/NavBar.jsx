@@ -41,10 +41,10 @@ export default function NavBar() {
             <div className="flex flex-row ">
 
                 <a href="#"
-                    className="toggle hidden md:flex w-full md:w-auto px-3 py-1 mr-4 text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-200 text-white md:rounded text-xl"
+                    className="toggle hidden md:flex w-full md:w-auto px-4 py-1 mr-10 text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-350 text-white md:rounded text-xl"
                     type="button" onClick=''>Ingresar</a>
                 <a href="#"
-                    className="toggle hidden md:flex w-full md:w-auto px-3 py-1 mr-4  text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-200 text-white md:rounded text-xl"
+                    className="toggle hidden md:flex w-full md:w-auto px-4 py-1 mr-10  text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-350 text-white md:rounded text-xl"
                     type="button" onClick="OpenRegister();">Registrarse</a>
                 <CartWidget />
             </div>

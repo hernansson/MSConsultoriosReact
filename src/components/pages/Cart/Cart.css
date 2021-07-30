@@ -1,3 +1,40 @@
-.cartContainer{
+.cartcontainerCart{
     padding-top: 100px;
+}
+
+.containerCart {
+
+    padding-top: 100px;
+    width: 100%;
+    
+}
+
+@media (min-width: 640px) {
+    .containerCart {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .containerCart {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .containerCart {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .containerCart {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .containerCart {
+        max-width: 1536px;
+    }
 }

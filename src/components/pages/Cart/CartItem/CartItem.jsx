@@ -9,7 +9,6 @@ const CartItem = (data) => {
     setCartCount(cartCount - ItemQ)
   }
 
-  console.log(ItemQ)
 
   return (
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">

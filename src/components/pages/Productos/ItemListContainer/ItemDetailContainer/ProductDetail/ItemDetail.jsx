@@ -22,14 +22,11 @@ export default function ItemDetail({ item }) {
 
     }
 
-
     const updateStock = (quanty) => {
 
         setStock(quanty)
 
     }
-
-
 
     return (
         <section className="text-gray-600 body-font overflow-hidden  ">

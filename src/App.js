@@ -8,6 +8,7 @@ import Categories from './components/pages/Productos/Categories/Categories';
 import ItemDetailContainer from './components/pages/Productos/ItemListContainer/ItemDetailContainer/ItemDetailContainer';
 import CustomProvider from './components/Context/CustomProvider';
 import Cart from './components/pages/Cart/Cart';
+import "tailwindcss/tailwind.css"
 
 function App() {
   return (

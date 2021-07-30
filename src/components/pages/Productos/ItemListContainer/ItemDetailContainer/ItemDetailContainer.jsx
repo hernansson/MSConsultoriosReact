@@ -36,7 +36,7 @@ export default function ItemDetailContainer() {
                 setTimeout(() => {
                     console.log(dataJson)
                     setItemDetail(dataJson)
-                }, 2000)
+                }, 0)
             )
     }
 

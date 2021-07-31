@@ -8,6 +8,7 @@ const CustomProvider = ({ children }) => {
 
     const addItem = (item, count) => {
 
+
         const indexId = cartItems.findIndex(e => e.item.id == item.id)
 
         if (indexId == -1) {

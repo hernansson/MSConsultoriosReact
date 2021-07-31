@@ -1,5 +1,6 @@
 import Carrousel from "./Carrousel/Carrousel"
 import React from "react";
+import LogIn from "../../NavBar/LogIn/LogIn";
 
 
 

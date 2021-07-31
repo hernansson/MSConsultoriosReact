@@ -1,16 +1,17 @@
 import React from "react"
 import { useState } from "react"
+import "./Login.css"
 
+export default function LogIn({value}) {
 
-export default function LogIn() {
+    const {showLogIn} = value;
 
-    const [state, setState] = useState('hidden')
 
     return (
 
         <div>
             <form onSubmit="logUser(this)">
-                <div className=" modal-login animate bg-white rounded shadow-lg p-8 m-4 fixed inset-0 z-40     "
+                <div className={`${showLogIn} modal-login animate mt-32  bg-white rounded shadow-lg p-8 m-4 fixed z-40`}
                     id="loginModal">
                     <div className="flex flex-col mb-4 md:w-full">
                         <label className="block text-gray-700 text-sm font-bold mb-2 " for="username">

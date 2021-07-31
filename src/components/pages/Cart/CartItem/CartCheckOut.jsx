@@ -7,22 +7,23 @@ const CartCheckOut = () => {
 
   const { cartCount, cartItems } = useContext(CartContext)
   const [total, setTotal] = useState(0)
+  const [discount, setDiscount] = useState("")
+  const [delivery, setDelivery] = useState(0)
+  const [showDiscount, setShowDiscount] = useState("")
 
   //HARDCORE POR EL MOMENTO
   const enviosPrice = {
     "Moto": 400,
     "CorreoArgentino": 800,
     "El pibito": 100,
-    "Retiro en local":0
+    "Retiro en local": 0
   }
 
-  const discountCodes = ["hernan","mauri","colo"]
+  const discountCodes = ["hernan", "mauri", "colo"]
 
   //
 
-  useEffect(() => {
-console.log("MEMONTEE")
-  },[cartCount])
+
 
   const totalPrice = () => {
     return cartItems.reduce(function (b, c) {
@@ -32,34 +33,55 @@ console.log("MEMONTEE")
 
   }
 
-  useEffect(()=>{
-
+  useEffect(() => {
+    console.log("ME MONTE 2")
     totalPriceWithDelivery()
 
-  },[])
+  }, [delivery, showDiscount,cartCount])
 
-  const totalPriceWithDelivery = (e) => {
-    console.log("LA E ",e)
-    if(e ==undefined){
-      setTotal(0 + totalPrice())
-    }else{
-      setTotal(Number(e.target.value) + totalPrice())
+  const totalPriceWithDelivery = () => {
+
+    setTotal((Number(delivery) + totalPrice()) * applyCoupon())
+
+  }
+
+  const getDelivery = (e) => {
+    console.log(e)
+    if (e == undefined) {
+      setDelivery(0)
+    } else {
+      setDelivery(e.target.value)
     }
-    
+
   }
-  const getDiscount = (e) =>{
-    return e.target.value;
+  const getDiscount = (e) => {
+
+    setDiscount(e.target.value)
   }
 
-  const applyCoupon = () =>{
-    let coupon = getDiscount()
+  const discountVerify = () => {
 
-    let index = discountCodes.findIndex(e => e==coupon)
+    let index = discountCodes.findIndex(e => e == discount)
+    return index != -1 ? true : false
+  }
 
-    if(index != -1){
-      alert("TIENE UN CUPON")
+  const applyCoupon = () => {
+
+    let bool = discountVerify()
+    let disc = (Number(delivery) + totalPrice()) * 0.1
+
+    if (bool) {
+      setShowDiscount(`Descuento 10% aplicado  -$${disc.toFixed(2)}`)
+      return 0.9
+    } else if (discount == "") {
+      setShowDiscount(``)
+      return 1
+    } else {
+      setShowDiscount("Codigo Invalido")
+      return 1
     }
   }
+
 
 
   return (
@@ -71,7 +93,7 @@ console.log("MEMONTEE")
       </div>
       <div>
         <label class="font-medium inline-block mb-3 text-sm uppercase">Envios</label>
-        <select class="block p-2 text-gray-600 w-full text-sm" onChange={totalPriceWithDelivery}>
+        <select class="block p-2 text-gray-600 w-full text-sm" onChange={getDelivery}>
           <option value={enviosPrice["Retiro en local"]} >{`Retiro en Local - GRATIS`}</option>
           <option value={enviosPrice["CorreoArgentino"]} >{`Correo Argentino - $${enviosPrice["CorreoArgentino"]}`}</option>
           <option value={enviosPrice["Moto"]} >{`Moto - $${enviosPrice["Moto"]}`}</option>
@@ -80,13 +102,20 @@ console.log("MEMONTEE")
       </div>
       <div class="py-10">
         <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Cupon de descuento</label>
-        <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full" onChange={getDiscount} />
+        <input type="text" id="promo" placeholder="Introducir codigo" class="p-2 text-sm w-full" onChange={getDiscount} />
+
+        
+          <div class="flex font-semibold justify-between py-2 text-sm uppercase">
+            <span className=" flex text-sm italic justify-between text-red-500">{showDiscount}</span>
+          </div>
+          <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase rounded-lg transform hover:scale-110 transition duration-350" onClick={applyCoupon}>Aplicar</button>
+        
       </div>
-      <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase rounded-lg transform hover:scale-110 transition duration-350" onClick={applyCoupon}>Aplicar</button>
-      <div class="border-t mt-8">
+
+      <div class="border-t mt-2">
         <div class="flex font-semibold justify-between py-6 text-sm uppercase">
           <span>Costo Total</span>
-          <span>{`$${total}`}</span>
+          <span>{`$${total.toFixed(2)}`}</span>
         </div>
         <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg transform hover:scale-110 transition duration-350">Checkout</button>
       </div>

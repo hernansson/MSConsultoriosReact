@@ -17,15 +17,16 @@ export default function CartWidget() {
     },[cartCount])
 
     const body = () =>{
-        return   <div className=" flex ">
-        <span className="transform hover:scale-150  mr-6 transition duration-500"><Link to="/Cart"><img src={cart} width="40px" alt="" /></Link></span>
-        <span className=" font-bold  text-green-600 mr-8 text-4xl ">{cartCount}</span>
-    </div>
+        return   
     }
 
     return (
         <div>
-        {showCart ? body() : null}
+        {showCart &&  
+                <div className=" flex ">
+                    <span className="transform hover:scale-150  mr-6 transition duration-500"><Link to="/Cart"><img src={cart} width="40px" alt="" /></Link></span>
+                    <span className=" font-bold  text-green-600 mr-8 text-4xl ">{cartCount}</span>
+                </div>}
         </div>
       
     )

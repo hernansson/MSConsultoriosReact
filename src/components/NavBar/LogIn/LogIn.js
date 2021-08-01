@@ -9,9 +9,9 @@ export default function LogIn({value}) {
 
     return (
 
-        <div>
+        <div >
             <form onSubmit="logUser(this)">
-                <div className={`${showLogIn} modal-login animate mt-32  bg-white rounded shadow-lg p-8 m-4 fixed z-40`}
+                <div className={`${showLogIn}  modal-login animate  mt-32   bg-white rounded shadow-lg p-8 fixed z-40`}
                     id="loginModal">
                     <div className="flex flex-col mb-4 md:w-full">
                         <label className="block text-gray-700 text-sm font-bold mb-2 " for="username">

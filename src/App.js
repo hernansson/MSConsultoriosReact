@@ -16,7 +16,7 @@ function App() {
     <BrowserRouter>
     <CustomProvider>
       <NavBar />
-      <div>
+      <div >
         <Switch>
           <Route exact path={'/'} exact component={Home} />
           <Route exact path={'/Productos'} exact component={Productos} />

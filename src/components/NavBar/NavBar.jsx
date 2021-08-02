@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget.js'
 import LogIn from './LogIn/LogIn'
@@ -13,8 +13,10 @@ export default function NavBar() {
         const [showLogIn,setShowLogin] = useState("hidden")
 
         const toggleLogIn = () =>{
-            setShowLogin("block")
+            showLogIn =="hidden" ? setShowLogin("block") : setShowLogin("hidden")
         }
+
+
 
     /*  document.getElementById("hamburger").onclick = function toggleMenu() {
           const navToggle = document.getElementsByClassName("toggle");

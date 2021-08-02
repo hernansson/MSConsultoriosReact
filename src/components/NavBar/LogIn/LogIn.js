@@ -9,8 +9,10 @@ export default function LogIn({value}) {
 
     return (
 
-        <div >
+        <div className="background bg-opacity-80">
             <form onSubmit="logUser(this)">
+            
+
                 <div className={`${showLogIn}  modal-login animate  mt-32   bg-white rounded shadow-lg p-8 fixed z-40`}
                     id="loginModal">
                     <div className="flex flex-col mb-4 md:w-full">
@@ -45,6 +47,7 @@ export default function LogIn({value}) {
                         &copy;2021 Hernan Suzuki Son. All rights reserved.
                     </p>
                 </div>
+                
             </form>
         </div>
 

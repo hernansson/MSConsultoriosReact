@@ -27,8 +27,12 @@ const CustomProvider = ({ children }) => {
 
     }
 
+    const removeAll = () => {
+        setCartCount(0)
+        setCartItems([])
+    }
     return (
-        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems }}>
+        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems, removeAll }}>
             {children}
         </Provider>
     )

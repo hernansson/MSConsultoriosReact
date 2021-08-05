@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 const CartItem = (data) => {
 
@@ -14,7 +15,7 @@ const CartItem = (data) => {
     <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
       <div class="flex w-2/5">
         <div class="w-20">
-          <img class="h-24" src={CartItem.image} alt="" />
+          <Link to={`./Detalle/${CartItem.title}/${CartItem.id}`}><img class="h-24" src={CartItem.image} alt="" /></Link>
         </div>
         <div class="flex flex-col justify-between ml-4 flex-grow">
           <span class="font-bold text-sm">{CartItem.Title}</span>

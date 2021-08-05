@@ -1,32 +1,34 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ItemCount from './ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import CartContext from '../../../../../Context/CartContext'
+import CartContext from '../../../../../../../Context/CartContext'
 
 
 export default function ItemDetail({ item }) {
-    console.log(item)
-    const [stock, setStock] = useState(item.stock)
-    const [count, setCount] = useState(0)
+
+
     const [show, setShow] = useState(false)
+    const { addItem, cartCount, setCartCount, cartItems } = useContext(CartContext)
+    const [stock, setStock] = useState(() => {
+        let index = cartItems.findIndex((e) => e.item.id == item.id)
 
-    const { addItem, cartCount, setCartCount } = useContext(CartContext)
+        return index == -1 ? item.stock : item.stock - cartItems[index].count
+    })
 
-    const onAdd = () => {
+
+    const onAdd = (count) => {
         updateStock(stock - count)
-        setCount(0)
         setShow(true)
         addItem(item, count)
-
     }
 
     const updateStock = (quanty) => {
 
         setStock(quanty)
-
     }
+
 
     return (
         <section className="text-gray-600 body-font overflow-hidden  ">
@@ -103,7 +105,7 @@ export default function ItemDetail({ item }) {
 
                         </div>
                         <div>
-                            <ItemCount value={{ stock, onAdd, setCount, count }} />
+                            <ItemCount value={{ stock, onAdd }} />
                         </div>
                         <div>
                             {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null}

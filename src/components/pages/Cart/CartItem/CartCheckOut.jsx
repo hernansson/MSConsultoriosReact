@@ -22,9 +22,6 @@ const CartCheckOut = () => {
   const discountCodes = ["hernan", "mauri", "colo"]
 
   //
-
-
-
   const totalPrice = () => {
     return cartItems.reduce(function (b, c) {
 
@@ -37,7 +34,7 @@ const CartCheckOut = () => {
     console.log("ME MONTE 2")
     totalPriceWithDelivery()
 
-  }, [delivery, showDiscount,cartCount])
+  }, [delivery, showDiscount, cartCount])
 
   const totalPriceWithDelivery = () => {
 
@@ -46,7 +43,7 @@ const CartCheckOut = () => {
   }
 
   const getDelivery = (e) => {
-    console.log(e)
+
     if (e == undefined) {
       setDelivery(0)
     } else {
@@ -104,12 +101,12 @@ const CartCheckOut = () => {
         <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Cupon de descuento</label>
         <input type="text" id="promo" placeholder="Introducir codigo" class="p-2 text-sm w-full" onChange={getDiscount} />
 
-        
-          <div class="flex font-semibold justify-between py-2 text-sm uppercase">
-            <span className=" flex text-sm italic justify-between text-red-500">{showDiscount}</span>
-          </div>
-          <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase rounded-lg transform hover:scale-110 transition duration-350" onClick={applyCoupon}>Aplicar</button>
-        
+
+        <div class="flex font-semibold justify-between py-2 text-sm uppercase">
+          <span className=" flex text-sm italic justify-between text-red-500">{showDiscount}</span>
+        </div>
+        <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase rounded-lg transform hover:scale-110 transition duration-350" onClick={applyCoupon}>Aplicar</button>
+
       </div>
 
       <div class="border-t mt-2">

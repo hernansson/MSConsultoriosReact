@@ -1,14 +1,16 @@
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import Item from './Item/Item';
 import "./ItemListContainer.css"
 import Loading from '../../../Loading/Loading';
 import getStore from '../../../../firebase';
+import { useParams } from 'react-router-dom';
+import ItemList from './ItemList/ItemList';
 export default function ItemListContainer() {
 
     const ic = useRef(true);
     let fetchStatus = useRef(false);
     const [productos, setProductos] = useState([]);
+    const { id } = useParams()
 
     const config = {
         method: 'GET',
@@ -19,7 +21,6 @@ export default function ItemListContainer() {
             'Content-Type': 'application/json'
         },
         redirect: 'follow'
-
     }
 
 
@@ -37,12 +38,52 @@ export default function ItemListContainer() {
 
     useEffect(() => {
 
-        fetchData();
+
+        const firestore = getStore()
+        const collection = firestore.collection("productos")
+
+        if (!id) {
+
+            const query = collection.get()
+            query
+                .then((snapshot) => {
+                    const documentos = snapshot.docs
+                    const productos = documentos.map((doc) => {
+                        return { id: doc.id, ...doc.data() }
+                    })
+
+                    setTimeout(() => {
+                        fetchStatus.current = true
+                        setProductos(productos)
+                    }, 2000)
 
 
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        } else {
 
+            let query = collection.where("categoria", "==", id)
+            /* query = query.where("price",">",4000) */
+            query = query.get()
+            query
+                .then((snapshot) => {
+                    const documentos = snapshot.docs
+                    const productos = documentos.map((doc) => {
+                        return { id: doc.id, ...doc.data() }
+                    })
 
-    }, [])
+                    fetchStatus.current = true
+                    setProductos(productos)
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
+    }, [id])
     //preguntar aca arriba
     return (
 
@@ -53,11 +94,8 @@ export default function ItemListContainer() {
 
                     <Loading />
                 </div> :
-                <div className="products">
-                    {productos.map((prod, idx) => (
-                        < Item producto={prod} key={idx} />
-                    ))}
-
+                <div>
+                    <ItemList productos={productos} />
                 </div>
             }
         </div>

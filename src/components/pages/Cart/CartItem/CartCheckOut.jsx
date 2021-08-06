@@ -34,7 +34,7 @@ const CartCheckOut = () => {
     console.log("ME MONTE 2")
     totalPriceWithDelivery()
 
-  }, [delivery, showDiscount, cartCount])
+  }, [delivery, showDiscount, cartCount, cartItems])
 
   const totalPriceWithDelivery = () => {
 

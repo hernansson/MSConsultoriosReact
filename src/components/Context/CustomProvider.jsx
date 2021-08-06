@@ -14,7 +14,7 @@ const CustomProvider = ({ children }) => {
         if (indexId == -1) {
             setCartItems([...cartItems, { item, count }])
         } else {
-            let copyArr = cartItems;
+            let copyArr = [...cartItems];
             copyArr[indexId].count = copyArr[indexId].count + count;
             setCartItems(copyArr)
         }

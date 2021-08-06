@@ -75,6 +75,7 @@ export default function ItemDetail({ item }) {
                                 </a>
                             </span>
                         </div>
+                        <p>{`Stock: ${stock}`}</p>
                         <p className="leading-relaxed">{item.descripcion}</p>
                         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             <div className="flex">
@@ -104,12 +105,17 @@ export default function ItemDetail({ item }) {
                             <span className="title-font font-medium text-2xl text-gray-900">${item.price}</span>
 
                         </div>
-                        <div>
-                            <ItemCount value={{ stock, onAdd }} />
-                        </div>
+                        {stock == 0 ? `Temporalmente sin stock` : <div>
+                            <div>
+                                <ItemCount value={{ stock, onAdd }} />
+                            </div>
+
+                        </div>}
                         <div>
                             {show ? <button><Link to="/Cart">TERMINAR COMPRA</Link></button> : null}
                         </div>
+
+
                     </div>
                 </div>
             </div>

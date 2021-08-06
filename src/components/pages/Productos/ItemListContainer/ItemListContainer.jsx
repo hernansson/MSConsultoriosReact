@@ -53,6 +53,7 @@ export default function ItemListContainer() {
                     })
 
                     setTimeout(() => {
+                        console.log(productos)
                         fetchStatus.current = true
                         setProductos(productos)
                     }, 2000)

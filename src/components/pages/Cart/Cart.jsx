@@ -10,7 +10,7 @@ useEffect
 
 export default function Cart() {
 
-  const { cartItems, cartCount, removeItem, setCartCount, setCartItems, removeAll } = useContext(CartContext)
+  const { cartItems, cartCount, removeItem, setCartCount, removeAll } = useContext(CartContext)
   const [show, setShow] = useState(false)
 
 

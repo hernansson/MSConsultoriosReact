@@ -9,20 +9,21 @@ import CustomProvider from './components/Context/CustomProvider';
 import Cart from './components/pages/Cart/Cart';
 import "tailwindcss/tailwind.css"
 import ItemListContainer from './components/pages/Productos/ItemListContainer/ItemListContainer';
-
+import Checkout from './components/pages/Cart/Checkout/Checkout';
 function App() {
   return (
 
     <BrowserRouter>
       <CustomProvider>
         <NavBar />
-        <div >
+        <div className="bg-green-500">
           <Switch>
             <Route exact path={'/'} exact component={Home} />
             <Route exact path={'/Productos'} exact component={Productos} />
             <Route path={'/Productos/Categoria/:id'} exact component={ItemListContainer} />
             <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
             <Route exact path={'/Cart'} exact component={Cart} />
+            <Route exact path={'/Cart/Checkout'} exact component={Checkout} />
           </Switch>
         </div>
       </CustomProvider>

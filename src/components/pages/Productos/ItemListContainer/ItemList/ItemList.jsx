@@ -5,6 +5,7 @@ const ItemList = (data) => {
 
     const { productos } = data
 
+
     return (
         <div className="products">
             {productos.map((prod, idx) => (

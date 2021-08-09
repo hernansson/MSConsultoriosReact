@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import CartContext from '../../../Context/CartContext'
+import { Link } from 'react-router-dom'
 
 const CartCheckOut = () => {
 
@@ -114,7 +115,7 @@ const CartCheckOut = () => {
           <span>Costo Total</span>
           <span>{`$${total.toFixed(2)}`}</span>
         </div>
-        <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg transform hover:scale-110 transition duration-350">Checkout</button>
+        <Link to="/Cart/Checkout"><button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg transform hover:scale-110 transition duration-350">Checkout</button></Link>
       </div>
     </div>
 

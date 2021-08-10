@@ -1,21 +1,18 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useEffect } from 'react'
 
 const CreditCard = ({ value }) => {
 
 
-    const { name, surname, cardNumber } = value
+    const { name, surname, cardNumber, cvv, expiry } = value
     console.log("EL NAME", cardNumber)
 
-    useEffect(() => {
-
-    }, [cardNumber[0]])
 
     return (
 
 
         <div class="space-y-16 mt-32 mr-10 ml-10">
-            <div class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
+            <div class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 duration-350">
 
                 <img class="relative object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" />
 
@@ -38,26 +35,18 @@ const CreditCard = ({ value }) => {
                         </h1>
                         <p class="font-medium tracking-more-wider">
                             {cardNumber.map((cn) => (
-                                `${cn}`
+                                `${cn} `
                             ))}
                         </p>
                     </div>
                     <div class="pt-6 pr-6">
                         <div class="flex justify-between">
                             <div class="">
-                                <h1 class="font-light text-xs">
-                                    Valid
-                                </h1>
-                                <p class="font-medium tracking-wider text-sm">
-                                    11/15
-                                </p>
-                            </div>
-                            <div class="">
                                 <h1 class="font-light  text-xs">
                                     Expiry
                                 </h1>
                                 <p class="font-medium tracking-wider text-sm">
-                                    03/25
+                                    {`${expiry[0]}/${expiry[1]}`}
                                 </p>
                             </div>
 
@@ -66,7 +55,7 @@ const CreditCard = ({ value }) => {
                                     CVV
                                 </h1>
                                 <p class="font-bold tracking-more-wider text-sm">
-                                    ···
+                                    {cvv}
                                 </p>
                             </div>
                         </div>

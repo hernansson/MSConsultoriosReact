@@ -16,14 +16,14 @@ function App() {
     <BrowserRouter>
       <CustomProvider>
         <NavBar />
-        <div className="bg-green-500">
+        <div className="">
           <Switch>
             <Route exact path={'/'} exact component={Home} />
             <Route exact path={'/Productos'} exact component={Productos} />
             <Route path={'/Productos/Categoria/:id'} exact component={ItemListContainer} />
             <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
             <Route exact path={'/Cart'} exact component={Cart} />
-            <Route exact path={'/Cart/Checkout'} exact component={Checkout} />
+            <Route exact path={'/Cart/Checkout/:orderId'} exact component={Checkout} />
           </Switch>
         </div>
       </CustomProvider>

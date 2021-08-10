@@ -3,14 +3,19 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import CartContext from '../../../Context/CartContext'
 import { Link } from 'react-router-dom'
+import getStore from '../../../../firebase'
+import { useHistory } from 'react-router'
 
 const CartCheckOut = () => {
 
-  const { cartCount, cartItems } = useContext(CartContext)
+  const { cartCount, cartItems, validateStock } = useContext(CartContext)
   const [total, setTotal] = useState(0)
   const [discount, setDiscount] = useState("")
   const [delivery, setDelivery] = useState(0)
   const [showDiscount, setShowDiscount] = useState("")
+  let history = useHistory()
+
+
 
   //HARDCORE POR EL MOMENTO
   const enviosPrice = {
@@ -23,6 +28,44 @@ const CartCheckOut = () => {
   const discountCodes = ["hernan", "mauri", "colo"]
 
   //
+
+  const createorder = (e) => {
+    e.preventDefault();
+
+    const newOrder = {
+      user: {
+        name: '',
+        surname: '',
+        phone: '',
+        email: '',
+        username: ''
+      },
+      products: cartItems,
+      date: getCurrentDate(),
+      coupon: discount,
+      delivery: delivery,
+      paid: false,
+      total: total.toFixed(2)
+    }
+
+    const firestore = getStore()
+    const collection = firestore.collection("ordenes")
+    const query = collection.add(newOrder)
+    query
+      .then((res) => {
+        console.log("ORDEN", res.id)
+        history.push(`/Cart/Checkout/${res.id}`);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const getCurrentDate = () => {
+    var d = new Date();
+    return ([d.getDate(), d.getMonth() + 1, d.getFullYear()].join('/'));
+  }
+
   const totalPrice = () => {
     return cartItems.reduce(function (b, c) {
 
@@ -115,7 +158,7 @@ const CartCheckOut = () => {
           <span>Costo Total</span>
           <span>{`$${total.toFixed(2)}`}</span>
         </div>
-        <Link to="/Cart/Checkout"><button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg transform hover:scale-110 transition duration-350">Checkout</button></Link>
+        <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-lg transform hover:scale-110 transition duration-350" onClick={createorder}>Checkout</button>
       </div>
     </div>
 

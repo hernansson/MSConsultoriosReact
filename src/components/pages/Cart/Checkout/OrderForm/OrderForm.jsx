@@ -2,7 +2,7 @@ import React from 'react'
 
 const OrderForm = ({ value }) => {
 
-    const { setName, setSurname, setCardNumber, cardNumber } = value
+    const { setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateOrder } = value
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -11,22 +11,48 @@ const OrderForm = ({ value }) => {
         setSurname(e.target.value)
     }
     const handleCardNumber1 = (e) => {
-        console.log("cambio el numero1", e.target.value)
-        cardNumber[0] = e.target.value
-        setCardNumber(cardNumber)
+
+        let copyArr = [...cardNumber]
+        copyArr[0] = e.target.value
+        setCardNumber(copyArr)
     }
     const handleCardNumber2 = (e) => {
-        console.log("cambio el numero1", cardNumber)
-        cardNumber[1] = e.target.value
-        setCardNumber(cardNumber)
+
+        let copyArr = [...cardNumber]
+        copyArr[1] = e.target.value
+        setCardNumber(copyArr)
     }
     const handleCardNumber3 = (e) => {
-        cardNumber[2] = e.target.value
-        setCardNumber(cardNumber)
+
+        let copyArr = [...cardNumber]
+        copyArr[2] = e.target.value
+        setCardNumber(copyArr)
     }
     const handleCardNumber4 = (e) => {
-        cardNumber[3] = e.target.value
-        setCardNumber(cardNumber)
+
+        let copyArr = [...cardNumber]
+        copyArr[3] = e.target.value
+        setCardNumber(copyArr)
+    }
+    const handleCvv = (e) => {
+        setCvv(e.target.value)
+    }
+
+    const handleExpiry1 = (e) => {
+        let cpy = [...expiry]
+        cpy[0] = e.target.value
+        setExpiry(cpy)
+    }
+
+    const handleExpiry2 = (e) => {
+        console.log(expiry)
+        let cpy = [...expiry]
+        cpy[1] = e.target.value
+        setExpiry(cpy)
+    }
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value)
     }
 
 
@@ -66,6 +92,7 @@ const OrderForm = ({ value }) => {
                 </div>
             </div>
 
+
             <div class="mb-4 md:flex md:justify-between ">
                 <div class="mb-4 md:mr-2 md:mb-0">
                     <label class=" mb-2 text-sm font-bold text-gray-700" for="firstName">
@@ -73,7 +100,7 @@ const OrderForm = ({ value }) => {
                     </label>
                     <p>
                         <input
-                            class="w-1/5 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            class="w-full lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             type="text"
                             placeholder="****"
                             maxlength="4"
@@ -81,7 +108,7 @@ const OrderForm = ({ value }) => {
                         />
                         <span>{` - `}</span>
                         <input
-                            class="w-1/5 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            class="w-full lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             type="text"
                             placeholder="****"
                             maxlength="4"
@@ -89,7 +116,7 @@ const OrderForm = ({ value }) => {
                         />
                         <span>{` - `}</span>
                         <input
-                            class="w-1/5 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            class="w-full lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             type="text"
                             placeholder="****"
                             maxlength="4"
@@ -97,7 +124,7 @@ const OrderForm = ({ value }) => {
                         />
                         <span>{` - `}</span>
                         <input
-                            class="w-1/5 px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            class="w-full lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                             type="text"
                             placeholder="****"
                             maxlength="4"
@@ -106,6 +133,46 @@ const OrderForm = ({ value }) => {
                     </p>
                 </div>
 
+            </div>
+
+
+            <div class="mb-4 md:flex md:justify-between ">
+                <div class="mb-4 md:mr-2 md:mb-0">
+                    <label class=" mb-2 text-sm font-bold text-gray-700" for="firstName">
+                        Expira
+                    </label>
+                    <p>
+                        <input
+                            class="w-1/3 lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            type="text"
+                            placeholder="MM"
+                            maxlength="2"
+                            onChange={handleExpiry1}
+                        />
+                        <span>{` / `}</span>
+                        <input
+                            class="w-1/2 lg:w-1/5 px-3 py-2 text-sm text-center leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            type="text"
+                            placeholder="aaaa"
+                            maxlength="4"
+                            onChange={handleExpiry2}
+                        />
+                    </p>
+                </div>
+                <div class="md:ml-2">
+                    <label class=" mb-2 text-sm font-bold text-gray-700" for="lastName">
+                        CVV
+                    </label>
+                    <p>
+                        <input
+                            class="w-1/2 px-3 py-2 text-center text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                            type="text"
+                            placeholder="***"
+                            maxlength="3"
+                            onChange={handleCvv}
+                        />
+                    </p>
+                </div>
             </div>
 
             <div class="mb-4">
@@ -117,57 +184,17 @@ const OrderForm = ({ value }) => {
                     id="email"
                     type="email"
                     placeholder="Email"
+                    onChange={handleEmail}
                 />
             </div>
-            <div class="mb-4 md:flex md:justify-between">
-                <div class="mb-4 md:mr-2 md:mb-0">
-                    <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
-                        Password
-                    </label>
-                    <input
-                        class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 
-                        type="password"
-                        placeholder="******************"
-                    />
-                    <p class="text-xs italic text-red-500">Please choose a password.</p>
-                </div>
-                <div class="md:ml-2">
-                    <label class="block mb-2 text-sm font-bold text-gray-700" for="c_password">
-                        Confirm Password
-                    </label>
-                    <input
-                        class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                        id="c_password"
-                        type="password"
-                        placeholder="******************"
-                    />
-                </div>
-            </div>
+
             <div class="mb-6 text-center">
                 <button
                     class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                    type="button"
-                >
-                    Register Account
+                    type="button" onClick={updateOrder}>
+                    Pagar
                 </button>
-            </div>
-            <hr class="mb-6 border-t" />
-            <div class="text-center">
-                <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                    href="#"
-                >
-                    Forgot Password?
-                </a>
-            </div>
-            <div class="text-center">
-                <a
-                    class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                    href="./index.html"
-                >
-                    Already have an account? Login!
-                </a>
             </div>
         </form>
 

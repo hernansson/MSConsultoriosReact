@@ -13,8 +13,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 40px;
   column-gap: 50px;
-  padding-left: 10%;
-  padding-right: 10%;
+
+  @apply w-3/4 mx-auto
   
 
 }

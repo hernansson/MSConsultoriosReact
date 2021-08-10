@@ -33,7 +33,7 @@ const CartCheckOut = () => {
     e.preventDefault();
 
     const newOrder = {
-      user: {
+      buyer: {
         name: '',
         surname: '',
         phone: '',

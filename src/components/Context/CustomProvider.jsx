@@ -34,6 +34,8 @@ const CustomProvider = ({ children }) => {
         setCartItems([])
     }
 
+
+
     /* const updateStock = () => {
          const collection = getStore().collection('productos')
          cartItems.map((e) => {

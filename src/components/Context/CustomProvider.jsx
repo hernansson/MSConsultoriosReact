@@ -2,6 +2,7 @@ import { Provider } from "./CartContext"
 import { useState } from "react"
 import React from "react";
 import getStore from "../../firebase";
+import firebase from "firebase";
 
 const CustomProvider = ({ children }) => {
 
@@ -36,59 +37,44 @@ const CustomProvider = ({ children }) => {
 
 
 
-    /* const updateStock = () => {
-         const collection = getStore().collection('productos')
-         cartItems.map((e) => {
-             let query = collection.doc(e.item.id)
-             let getQuery = query.get()
-             getQuery
- 
-         })
-         let query = collection.doc(orderId)
-         query = query.update({ user: { name: name, surname: surname, email: email }, paid: true })
-         query.then(() => {
-             alert("Compra realizada!")
-         })
- 
-     }*/
+    const updateStock = () => {
 
-    const validateStock = () => {
-
-
-        let promise = new Promise((res) => {
-            let hasStock = true;
-            for (let i = 0; i < cartItems.length; i++) {
-                const collection = getStore().collection('productos')
-
-                let getQuery = collection.doc(cartItems[i].item.id).get()
-                getQuery
-                    .then((doc) => {
-                        console.log("COUNT DENTRO DEL THEN", cartItems[i].count)
-                        if ((doc.data().stock - cartItems[i].count) < 0) {
-                            hasStock = false
-
-                            if (i == cartItems.length) {
-                                res(hasStock)
-                            }
-
-                        }
-                    })
-
-            }
+        cartItems.map((cartItem) => {
+            const collection = getStore().collection('productos')
+            let query = collection.doc(cartItem.item.id)
+            query = query.update({ stock: firebase.firestore.FieldValue.increment(-(cartItem.count)) })
 
         })
 
-        promise.then((status) => {
-            console.log("SSTATUS", status)
-            return status
+    }
+
+    const validateStock = async () => {
+
+
+        const isAvailable = async (id, cant) => {
+            const collection = getStore().collection('productos')
+            let doc = await collection.doc(id).get()
+            return ((doc.data().stock - cant) < 0)
+        }
+
+
+        const promises = cartItems.flatMap(async cartItem => {
+            let hasStock = await isAvailable(cartItem.item.id, cartItem.count)
+
+            console.log(hasStock)
+            return hasStock ? cartItem : []
+
         })
 
+        const noStock = (await Promise.all(promises)).flat(1)
+
+        return noStock
 
 
     }
 
     return (
-        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems, removeAll, validateStock }}>
+        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems, removeAll, validateStock, updateStock }}>
             {children}
         </Provider>
     )

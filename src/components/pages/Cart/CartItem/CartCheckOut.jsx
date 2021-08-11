@@ -8,7 +8,7 @@ import { useHistory } from 'react-router'
 
 const CartCheckOut = () => {
 
-  const { cartCount, cartItems, validateStock } = useContext(CartContext)
+  const { cartCount, cartItems } = useContext(CartContext)
   const [total, setTotal] = useState(0)
   const [discount, setDiscount] = useState("")
   const [delivery, setDelivery] = useState(0)

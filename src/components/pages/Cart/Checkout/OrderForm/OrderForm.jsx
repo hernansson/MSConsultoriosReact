@@ -2,7 +2,7 @@ import React from 'react'
 
 const OrderForm = ({ value }) => {
 
-    const { setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateOrder, setPhone } = value
+    const { setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateAll, setPhone } = value
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -65,7 +65,7 @@ const OrderForm = ({ value }) => {
 
 
 
-        <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={updateOrder}>
+        <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={updateAll}>
             <h3 class="pt-2 py-6 text-2xl text-center">Complete sus datos</h3>
             <div class="mb-4 md:flex md:justify-between ">
                 <div class="mb-4 md:mr-2 md:mb-0">

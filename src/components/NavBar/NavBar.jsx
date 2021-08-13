@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget.js'
 import LogIn from './LogIn/LogIn'
@@ -7,25 +7,17 @@ import DropDownProducts from './DropDownProducts/DropdownProducts.jsx'
 
 
 
-
 export default function NavBar() {
 
-        const [showLogIn,setShowLogin] = useState("hidden")
+    const [showLogIn, setShowLogin] = useState("hidden")
 
-        const toggleLogIn = () =>{
-            showLogIn =="hidden" ? setShowLogin("block") : setShowLogin("hidden")
-        }
+    const toggleLogIn = () => {
+        showLogIn === "hidden" ? setShowLogin("block") : setShowLogin("hidden")
+    }
 
 
 
-    /*  document.getElementById("hamburger").onclick = function toggleMenu() {
-          const navToggle = document.getElementsByClassName("toggle");
-          for (let i = 0; i < navToggle.length; i++) {
-              navToggle.item(i).classList.toggle("hidden");
-          }
-      }*/
 
-      
 
     return (
         <div>
@@ -33,9 +25,9 @@ export default function NavBar() {
                 <img src="http://acmelogos.com/images/logo-1.svg" alt="ACME" width="120" />
                 <div className="flex md:hidden">
                     <button id="hamburger">
-                        <img className="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png"
+                        <img className="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png" alt="X"
                             width="40" height="40" />
-                        <img className="toggle hidden" src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png"
+                        <img className="toggle hidden" src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png" alt="X"
                             width="40" height="40" />
                     </button>
                 </div>
@@ -43,27 +35,27 @@ export default function NavBar() {
                     <NavLink to="/" activeClassName="active"
                         className=" block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Home</NavLink>
                     <DropDownProducts />
-                    <a href="#"
-                        className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Turnos</a>
-                    <a href="#"
-                        className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Contacto</a>
+                    <button
+                        className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Turnos</button>
+                    <button
+                        className="block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Contacto</button>
                 </div>
                 <div className="flex flex-row ">
 
-                    <a href="#"
+                    <button
                         className="toggle hidden md:flex w-full md:w-auto px-4 py-1 mr-10 text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-350 text-white md:rounded text-xl"
-                        type="button" onClick={toggleLogIn}>Ingresar</a>
-                    <a href="#"
+                        type="button" onClick={toggleLogIn}>Ingresar</button>
+                    <button
                         className="toggle hidden md:flex w-full md:w-auto px-4 py-1 mr-10  text-center bg-blue-500 hover:bg-blue-600 transform hover:scale-125 duration-350 text-white md:rounded text-xl"
-                        type="button" onClick="OpenRegister();">Registrarse</a>
+                        type="button" >Registrarse</button>
                     <CartWidget />
                 </div>
             </nav >
 
-            
-            <LogIn value={{showLogIn,setShowLogin}}/>
-            
-            
+
+            <LogIn value={{ showLogIn, setShowLogin }} />
+
+
         </div>
 
 

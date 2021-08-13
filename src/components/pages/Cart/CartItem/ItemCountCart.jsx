@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useContext } from 'react'
 import CartContext from '../../../Context/CartContext'
-import Cart from '../Cart'
+
 
 const ItemCountCart = ({ itemQ, cartCount, setCartCount, CartItem }) => {
 
@@ -10,19 +10,19 @@ const ItemCountCart = ({ itemQ, cartCount, setCartCount, CartItem }) => {
     const [iCount, setICount] = useState(itemQ)
 
     const [showPlus, setShowPlus] = useState(() => {
-        return itemQ == CartItem.stock ? false : true
+        return itemQ === CartItem.stock ? false : true
     })
     const [showMinus, setShowMinus] = useState(() => {
-        return itemQ == 1 ? false : true
+        return itemQ === 1 ? false : true
 
     })
 
     const addOne = () => {
         if (iCount < CartItem.stock) {
-            if (iCount == CartItem.stock) {
+            if (iCount === CartItem.stock) {
                 setShowPlus(false)
             }
-            if (iCount == 1) {
+            if (iCount === 1) {
                 setShowMinus(true)
             }
 
@@ -34,10 +34,10 @@ const ItemCountCart = ({ itemQ, cartCount, setCartCount, CartItem }) => {
     }
     const subsOne = () => {
 
-        if (iCount == 2) {
+        if (iCount === 2) {
             setShowMinus(false)
         }
-        if (iCount == CartItem.stock) {
+        if (iCount === CartItem.stock) {
             setShowPlus(true)
         }
         addItem(CartItem, -1)

@@ -1,22 +1,21 @@
 import React from "react"
-import { useState } from "react"
 import "./Login.css"
 
-export default function LogIn({value}) {
+export default function LogIn({ value }) {
 
-    const {showLogIn} = value;
+    const { showLogIn } = value;
 
 
     return (
 
         <div className="background bg-opacity-80">
-            <form onSubmit="logUser(this)">
-            
+            <form >
+
 
                 <div className={`${showLogIn}  modal-login animate  mt-32   bg-white rounded shadow-lg p-8 fixed z-40`}
                     id="loginModal">
                     <div className="flex flex-col mb-4 md:w-full">
-                        <label className="block text-gray-700 text-sm font-bold mb-2 " for="username">
+                        <label className="block text-gray-700 text-sm font-bold mb-2 " htmlFor="username">
                             Usuario
                         </label>
                         <input
@@ -24,7 +23,7 @@ export default function LogIn({value}) {
                             autoComplete="off" id="username" type="text" placeholder="Username"></input>
                     </div>
                     <div className="flex flex-col mb-4 md:w-full">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                             Contraseña
                         </label>
                         <input
@@ -39,7 +38,7 @@ export default function LogIn({value}) {
                             Iniciar Sesion
                         </button>
                         <a className="inline-block my-3 text-center font-bold flex-auto text-sm text-blue-500 hover:text-blue-800"
-                            href="#">
+                        >
                             Olvido su contraseña?
                         </a>
                     </div>
@@ -47,7 +46,7 @@ export default function LogIn({value}) {
                         &copy;2021 Hernan Suzuki Son. All rights reserved.
                     </p>
                 </div>
-                
+
             </form>
         </div>
 

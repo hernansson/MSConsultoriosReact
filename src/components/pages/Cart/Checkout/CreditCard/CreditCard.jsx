@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { useEffect } from 'react'
+import React from 'react'
+
 
 const CreditCard = ({ value }) => {
 
@@ -11,50 +11,50 @@ const CreditCard = ({ value }) => {
     return (
 
 
-        <div class="space-y-16 mt-32 mr-10 ml-10">
-            <div class="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 duration-350">
+        <div className="space-y-16 mt-32 mr-10 ml-10">
+            <div className="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 duration-350">
 
-                <img class="relative object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" />
+                <img className="relative object-cover w-full h-full rounded-xl" src="https://i.imgur.com/kGkSg1v.png" alt="No available" />
 
-                <div class="w-full px-8 absolute top-8">
-                    <div class="flex justify-between">
-                        <div class="">
-                            <h1 class="font-light">
+                <div className="w-full px-8 absolute top-8">
+                    <div className="flex justify-between">
+                        <div className="">
+                            <h1 className="font-light">
                                 Nombre
                             </h1>
-                            <p class="font-medium tracking-widest">
+                            <p className="font-medium tracking-widest">
                                 <span>{name}</span>
                                 <span>{` ${surname}`}</span>
                             </p>
                         </div>
-                        <img class="w-14 h-14" src="https://i.imgur.com/bbPHJVe.png" />
+                        <img className="w-14 h-14" src="https://i.imgur.com/bbPHJVe.png" alt="No available" />
                     </div>
-                    <div class="pt-1">
-                        <h1 class="font-light">
+                    <div className="pt-1">
+                        <h1 className="font-light">
                             Card Number
                         </h1>
-                        <p class="font-medium tracking-more-wider">
+                        <p className="font-medium tracking-more-wider">
                             {cardNumber.map((cn) => (
                                 `${cn} `
                             ))}
                         </p>
                     </div>
-                    <div class="pt-6 pr-6">
-                        <div class="flex justify-between">
-                            <div class="">
-                                <h1 class="font-light  text-xs">
+                    <div className="pt-6 pr-6">
+                        <div className="flex justify-between">
+                            <div className="">
+                                <h1 className="font-light  text-xs">
                                     Expiry
                                 </h1>
-                                <p class="font-medium tracking-wider text-sm">
+                                <p className="font-medium tracking-wider text-sm">
                                     {`${expiry[0]}/${expiry[1]}`}
                                 </p>
                             </div>
 
-                            <div class="">
-                                <h1 class="font-light text-xs">
+                            <div className="">
+                                <h1 className="font-light text-xs">
                                     CVV
                                 </h1>
-                                <p class="font-bold tracking-more-wider text-sm">
+                                <p className="font-bold tracking-more-wider text-sm">
                                     {cvv}
                                 </p>
                             </div>

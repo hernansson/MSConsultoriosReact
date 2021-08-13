@@ -7,34 +7,12 @@ import { useParams } from 'react-router-dom';
 import ItemList from './ItemList/ItemList';
 export default function ItemListContainer() {
 
-    const ic = useRef(true);
+
     let fetchStatus = useRef(false);
     const [productos, setProductos] = useState([]);
     const { id } = useParams()
 
-    const config = {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'default',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow'
-    }
 
-
-    const fetchData = () => {
-        fetch('http://localhost:4000/Products', config)
-            .then(res => res.json())
-            .then(resp => setTimeout(() => {
-                console.log(resp)
-                fetchStatus.current = true
-                console.log("seteo fetch en", fetchStatus.current)
-                setProductos(resp)
-
-            }, 3000))
-    }
 
     useEffect(() => {
 
@@ -90,7 +68,7 @@ export default function ItemListContainer() {
 
         <div>
             {console.log("el fetch stats en laoding es :", fetchStatus.current)}
-            {fetchStatus.current == false ?
+            {fetchStatus.current === false ?
                 <div className="loading">
 
                     <Loading />

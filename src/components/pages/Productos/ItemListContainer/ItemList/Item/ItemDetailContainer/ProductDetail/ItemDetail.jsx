@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ItemCount from './ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
@@ -10,11 +10,11 @@ export default function ItemDetail({ item }) {
 
 
     const [show, setShow] = useState(false)
-    const { addItem, cartCount, setCartCount, cartItems } = useContext(CartContext)
+    const { addItem, cartItems } = useContext(CartContext)
     const [stock, setStock] = useState(() => {
-        let index = cartItems.findIndex((e) => e.item.id == item.id)
+        let index = cartItems.findIndex((e) => e.item.id === item.id)
 
-        return index == -1 ? item.stock : item.stock - cartItems[index].count
+        return index === -1 ? item.stock : item.stock - cartItems[index].count
     })
 
 
@@ -105,7 +105,7 @@ export default function ItemDetail({ item }) {
                             <span className="title-font font-medium text-2xl text-gray-900">${item.price}</span>
 
                         </div>
-                        {stock == 0 ? `Temporalmente sin stock` : <div>
+                        {stock === 0 ? `Temporalmente sin stock` : <div>
                             <div>
                                 <ItemCount value={{ stock, onAdd }} />
                             </div>

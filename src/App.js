@@ -18,12 +18,12 @@ function App() {
         <NavBar />
         <div className="">
           <Switch>
-            <Route exact path={'/'} exact component={Home} />
-            <Route exact path={'/Productos'} exact component={Productos} />
+            <Route path={'/'} exact component={Home} />
+            <Route path={'/Productos'} exact component={Productos} />
             <Route path={'/Productos/Categoria/:id'} exact component={ItemListContainer} />
             <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
-            <Route exact path={'/Cart'} exact component={Cart} />
-            <Route exact path={'/Cart/Checkout/:orderId'} exact component={Checkout} />
+            <Route path={'/Cart'} exact component={Cart} />
+            <Route path={'/Cart/Checkout/:orderId'} exact component={Checkout} />
           </Switch>
         </div>
       </CustomProvider>

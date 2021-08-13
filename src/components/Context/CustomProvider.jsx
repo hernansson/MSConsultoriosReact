@@ -8,13 +8,14 @@ const CustomProvider = ({ children }) => {
 
     const [cartCount, setCartCount] = useState(0);
     const [cartItems, setCartItems] = useState([])
+    const [order, setOrder] = useState('')
 
     const addItem = (item, count) => {
 
 
-        const indexId = cartItems.findIndex(e => e.item.id == item.id)
+        const indexId = cartItems.findIndex(e => e.item.id === item.id)
 
-        if (indexId == -1) {
+        if (indexId === -1) {
             setCartItems([...cartItems, { item, count }])
         } else {
             let copyArr = [...cartItems];
@@ -25,7 +26,7 @@ const CustomProvider = ({ children }) => {
     }
 
     const removeItem = id => {
-        let copyArr = cartItems.filter(e => e.item.id != id)
+        let copyArr = cartItems.filter(e => e.item.id !== id)
         setCartItems(copyArr)
 
     }
@@ -43,7 +44,7 @@ const CustomProvider = ({ children }) => {
             const collection = getStore().collection('productos')
             let query = collection.doc(cartItem.item.id)
             query = query.update({ stock: firebase.firestore.FieldValue.increment(-(cartItem.count)) })
-
+            return query
         })
 
     }
@@ -74,7 +75,7 @@ const CustomProvider = ({ children }) => {
     }
 
     return (
-        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems, removeAll, validateStock, updateStock }}>
+        <Provider value={{ cartItems, addItem, cartCount, setCartCount, removeItem, setCartItems, removeAll, validateStock, updateStock, order, setOrder }}>
             {children}
         </Provider>
     )

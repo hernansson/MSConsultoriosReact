@@ -20,8 +20,8 @@ export default function ItemDetailContainer() {
 
 
     useEffect(() => {
-        const firestore = getStore()
-        const collection = firestore.collection("productos")
+
+
 
         if (iD) {
 
@@ -51,7 +51,7 @@ export default function ItemDetailContainer() {
     return (
         <div className="Itemdetail py-20">
 
-            {fetchStatus.current == false ?
+            {fetchStatus.current === false ?
                 <div className="loading">
 
                     <Loading />

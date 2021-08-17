@@ -26,11 +26,15 @@ export default function ItemDetail({ item }) {
 
 
     const onAdd = (count) => {
-        updateStock(stock - count)
-        setCount(0)
-        setShow(true)
-        addItem(item, count)
-        modalWithTime()
+
+
+        if (count !== 0) {
+            modalWithTime()
+            setShow(true)
+            addItem(item, count)
+            updateStock(stock - count)
+            setCount(0)
+        }
 
         if (count === stock) {
             setShowAddCart(false)
@@ -154,7 +158,7 @@ export default function ItemDetail({ item }) {
                     </div>
                 </div>
             </section>
-            <Notify value={{ setShowAdd, showAdd }} />
+            <Notify value={{ showAdd, itemTitle: item.title }} />
         </div>
     )
 }

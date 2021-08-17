@@ -2,10 +2,10 @@ import React from 'react'
 
 const Notify = ({ value }) => {
 
-    const { showAdd, setShowAdd } = value
+    const { showAdd, itemTitle } = value
     return (
 
-        <div className={`flex ${showAdd} animate `}>
+        <div className={`flex fixed top-24 right-4 ${showAdd} animate `}>
             <div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg">
                 <div class="flex flex-row">
                     <div class="px-2">
@@ -15,7 +15,7 @@ const Notify = ({ value }) => {
                     </div>
                     <div class="ml-2 mr-6">
                         <span class="font-semibold">Agregado exitosamente!</span>
-                        <span class="block text-gray-500">Anyone with a link can now view this file</span>
+                        <span class="block text-gray-500">{`Añadiste '${itemTitle}' a tu carrito`}</span>
                     </div>
                 </div>
             </div>

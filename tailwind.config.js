@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       transitionDuration: {
         '350': '350ms'
-      }
+      },
     },
   },
   variants: {

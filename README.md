@@ -2,6 +2,7 @@
 
 Las noticias del Home  A DEFINIR.
 Log de Users a implementar.
+Server no se utiliza mas, decidi pasar todo a firebase para dejar de trabajar localmente
 
 Funcionabilidad
 

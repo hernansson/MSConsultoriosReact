@@ -14,7 +14,7 @@ import { useHistory } from 'react-router'
 
 const Checkout = () => {
 
-    const { validateStock, updateStock, setCartCount, setCartItems } = useContext(CartContext)
+    const { validateStock, updateStock, setCartCount, setCartItems, setOrder } = useContext(CartContext)
     const { orderId } = useParams()
     const [name, setName] = useState('Debora Meltrozo')
     const [surname, setSurname] = useState('')
@@ -70,14 +70,29 @@ const Checkout = () => {
         let query = collection.doc(orderId).get()
         query
             .then((doc) => {
+
+
                 console.log("CARGAR ORDEN..")
+                setOrder(orderId)
+                setCartItems(doc.data().products)
                 setTotal(doc.data().total)
+                let sum = getCount(doc.data().products)
+                console.log(sum)
+                setCartCount(sum)
 
                 setTimeout(() => {
                     setShowLoadingOrder(false)
                 }, 2000)
 
+
             })
+            .catch((err) => {
+                console.log(err)
+                alert("Numero de Orden Invalido")
+                history.push("../../Productos")
+            })
+
+
     }
 
 
@@ -112,6 +127,15 @@ const Checkout = () => {
 
 
     )
+}
+
+const getCount = (list) => {
+
+    let sum = list.reduce((acc, elem) => {
+        return acc + elem.count
+    }, 0)
+
+    return sum
 }
 
 export default Checkout

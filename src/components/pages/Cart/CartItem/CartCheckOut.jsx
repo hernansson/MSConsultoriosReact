@@ -7,7 +7,7 @@ import { useHistory } from 'react-router'
 
 const CartCheckOut = () => {
 
-  const { cartCount, cartItems, setOrder } = useContext(CartContext)
+  const { cartCount, cartItems, setOrder, order } = useContext(CartContext)
   const [total, setTotal] = useState(0)
   const [discount, setDiscount] = useState("")
   const [delivery, setDelivery] = useState(0)
@@ -47,18 +47,36 @@ const CartCheckOut = () => {
       total: total.toFixed(2)
     }
 
+
     const firestore = getStore()
     const collection = firestore.collection("ordenes")
-    const query = collection.add(newOrder)
-    query
-      .then((res) => {
-        console.log("ORDEN", res.id)
-        setOrder(res.id)
-        history.push(`/Cart/Checkout/${res.id}`);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    if (order === '') {
+      const query = collection.add(newOrder)
+      query
+        .then((res) => {
+
+          setOrder(res.id)
+          history.push(`/Cart/Checkout/${res.id}`);
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
+    } else {
+      const query = collection.doc(order)
+
+      query.update({ products: cartItems, date: getCurrentDate(), coupon: discount, delivery: delivery, total: total.toFixed(2) })
+        .then(() => {
+
+
+          history.push(`/Cart/Checkout/${order}`);
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
   }
 
   const getCurrentDate = () => {
@@ -164,5 +182,7 @@ const CartCheckOut = () => {
 
   )
 }
+
+
 
 export default CartCheckOut

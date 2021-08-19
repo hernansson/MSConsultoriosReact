@@ -34,7 +34,8 @@ export default function ItemDetailContainer() {
                         fetchStatus.current = true
                         setItemDetail({ id: doc.id, ...doc.data() })
                     } else {
-                        history.push("/")
+                        alert("Producto inexistente")
+                        history.push("/Productos")
                     }
                 })
                 .catch(err => {

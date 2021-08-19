@@ -1,3 +1,8 @@
+
+.cartLabel {
+    @apply font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center;
+    
+}
 .cartcontainerCart{
     padding-top: 100px;
 }

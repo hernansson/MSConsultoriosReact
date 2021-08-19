@@ -75,7 +75,7 @@ const CartCheckOut = () => {
   }
 
   useEffect(() => {
-    console.log("ME MONTE 2")
+
     totalPriceWithDelivery()
 
   }, [delivery, showDiscount, cartCount, cartItems])

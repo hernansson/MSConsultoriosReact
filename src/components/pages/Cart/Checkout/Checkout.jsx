@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CreditCard from './CreditCard/CreditCard'
 import OrderForm from './OrderForm/OrderForm'
 import { useParams } from 'react-router'
 import getStore from '../../../../firebase'
 import CartContext from '../../../Context/CartContext'
 import { useContext } from 'react'
+import LoadingOrder from './LoadingOrder/LoadingOrder'
+import Thanks from './Thanks/Thanks'
+import { useHistory } from 'react-router'
 
 
 
@@ -22,6 +25,8 @@ const Checkout = () => {
     const [phone, setPhone] = useState(1554545454)
     const [total, setTotal] = useState(0)
     const [isPaid, setIsPaid] = useState(false)
+    const [showLoadingOrder, setShowLoadingOrder] = useState(true)
+    let history = useHistory()
 
 
     const updateOrder = () => {
@@ -48,47 +53,61 @@ const Checkout = () => {
             setCartItems([])
 
             updateOrder()
+        } else {
+            alert("Se acabo el Stock :(")
+            history.push('/Cart')
         }
 
 
     }
 
-    /*  const getOrder = () => {
-          const collection = getStore().collection('ordenes')
-          let query = collection.doc(orderId).get()
-          query
-              .then((doc) => {
-                  console.log("CARGAR ORDEN..")
-                  setTotal(doc.data().total)
-              })
-      }
-  */
+    useEffect(() => {
+        getOrder()
+    }, [])
+
+    const getOrder = () => {
+        const collection = getStore().collection('ordenes')
+        let query = collection.doc(orderId).get()
+        query
+            .then((doc) => {
+                console.log("CARGAR ORDEN..")
+                setTotal(doc.data().total)
+
+                setTimeout(() => {
+                    setShowLoadingOrder(false)
+                }, 2000)
+
+            })
+    }
+
 
     return (
         <div>
-            {!isPaid ?
-
-                <div className="w-3/4 mx-auto py-44 " >
-                    <span>{orderId}</span>
-                    <span>{`    ${total}`}</span>
-                    <div className="w-full mx-auto xl:w-3/4  shadow-2xl rounded-3xl flex">
-                        <div className="w-full h-auto bg-gray-200 hidden 2xl:block lg:w-5/12 2xl:w-11/12  rounded-l-lg">
-                            <CreditCard value={{ name, surname, cardNumber, cvv, expiry }} />
-
+            {showLoadingOrder ?
+                <LoadingOrder />
+                : isPaid ?
+                    <Thanks />
+                    :
+                    <div className="w-3/4 mx-auto py-44 " >
+                        <div className="w-1/2 border-2 border-red-400 rounded-lg mx-auto text-center mb-5 ">
+                            <span className="text-lg font-bold">{`Su codigo de orden es #${orderId}`}</span>
+                            <span>{` Precio total: ${total}`}</span>
                         </div>
-                        <div className="w-full  bg-white p-5 rounded-lg lg:rounded-l-none">
-                            <OrderForm value={{ setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateAll, setPhone }} />
+                        <div className="w-full mx-auto   shadow-2xl rounded-3xl flex">
+                            <div className=" h-auto bg-gray-200 hidden 2xl:block lg:w-5/12 2xl:w-11/12  rounded-l-lg">
+                                <CreditCard value={{ name, surname, cardNumber, cvv, expiry }} />
+
+                            </div>
+                            <div className="w-full  bg-white p-5 rounded-lg lg:rounded-l-none">
+                                <OrderForm value={{ setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateAll, setPhone }} />
+                            </div>
                         </div>
+
                     </div>
 
-                </div>
-                :
-                <div className=" text-center pt-48 ">
-                    <span className=" font-bold  text-2xl text-pink-400">MUCHAS GRACIAS POR SU COMPRA!</span>
-                    <img className="mx-auto mt-5 mb-5" src="https://c.tenor.com/n9u7zcGqlUQAAAAi/cute-hamster.gif" alt="" />
-                </div>
 
             }
+
         </div>
 
 

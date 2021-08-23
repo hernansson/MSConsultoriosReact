@@ -139,7 +139,7 @@ export default function ItemDetail({ item }) {
                                 {stock === 0 ?
                                     <div>
                                         <p className="font-bold text-lg mt-4">Temporalmente sin stock</p>
-                                        <p className="mt-2 text-red-500 underline hover:text-red-800"><Link to="/Productos">Continuar comprando?</Link></p>
+                                        <p className="mt-2 text-red-500 underline hover:text-red-800"><Link to="/">Continuar comprando?</Link></p>
                                     </div>
                                     :
                                     <div className="flex flex-nowrap flex-row">

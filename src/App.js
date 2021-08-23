@@ -18,8 +18,8 @@ function App() {
         <NavBar />
         <div className="">
           <Switch>
-            <Route path={'/'} exact component={Home} />
-            <Route path={'/Productos'} exact component={Productos} />
+            <Route path={'/Home'} exact component={Home} />
+            <Route path={'/'} exact component={Productos} />
             <Route path={'/Productos/Categoria/:id'} exact component={ItemListContainer} />
             <Route path={'/Detalle/:title/:iD'} exact component={ItemDetailContainer} />
             <Route path={'/Cart'} exact component={Cart} />

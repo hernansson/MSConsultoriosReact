@@ -6,7 +6,7 @@ import "./Item.css"
 export default function Item(data) {
 
 
-   
+
 
 
     return (
@@ -23,10 +23,10 @@ export default function Item(data) {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-start px-2 pt-2">
+                <div className="flex justify-between items-start  px-2 pt-2">
                     <div className="p-2 flex-grow">
-                        <h1 className="font-medium text-xl font-poppins">{data.producto.title}</h1>
-                        <p className="text-gray-500 font-nunito">{data.producto.descripcion}</p>
+                        <h1 className="font-medium text-xl font-poppins ">{data.producto.title}</h1>
+
                     </div>
                     <div className="p-2 text-right">
                         <div className="text-teal-500 font-semibold text-lg font-poppins">${data.producto.price}</div>

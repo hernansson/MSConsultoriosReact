@@ -32,7 +32,7 @@ export default function NavBar() {
                     </button>
                 </div>
                 <div className="toggle hidden w-full   md:w-auto md:flex ">
-                    <NavLink to="/" activeClassName="active"
+                    <NavLink to="/Home" activeClassName="active"
                         className=" block md:inline-block text-blue-100 hover:text-blue-500 transform hover:scale-125 duration-200 px-3 py-3 border-b-2 mr-4 border-blue-100 md:border-none text-xl">Home</NavLink>
                     <DropDownProducts />
                     <button

@@ -40,8 +40,8 @@ const Checkout = () => {
 
     }
 
-    const updateAll = async (e) => {
-        e.preventDefault();
+    const updateAll = async () => {
+
 
         let noStockItem = await validateStock()
 
@@ -71,25 +71,32 @@ const Checkout = () => {
         query
             .then((doc) => {
 
+                if (!doc.data().paid) {
+                    setTimeout(() => {
 
-                console.log("CARGAR ORDEN..")
-                setOrder(orderId)
-                setCartItems(doc.data().products)
-                setTotal(doc.data().total)
-                let sum = getCount(doc.data().products)
-                console.log(sum)
-                setCartCount(sum)
+                        setOrder(orderId)
+                        setCartItems(doc.data().products)
+                        setTotal(doc.data().total)
+                        let sum = getCount(doc.data().products)
+                        console.log(sum)
+                        setCartCount(sum)
+                        setShowLoadingOrder(false)
+                    }, 2000)
+                } else {
+                    alert("Orden ya pagada.")
+                    history.push("../../")
 
-                setTimeout(() => {
-                    setShowLoadingOrder(false)
-                }, 2000)
+                }
+
+
+
 
 
             })
             .catch((err) => {
                 console.log(err)
                 alert("Numero de Orden Invalido")
-                history.push("../../Productos")
+                history.push("../../")
             })
 
 
@@ -106,7 +113,7 @@ const Checkout = () => {
                     <div className="w-3/4 mx-auto py-44 " >
                         <div className="w-1/2 border-2 border-red-400 rounded-lg mx-auto text-center mb-5 ">
                             <span className="text-lg font-bold">{`Su codigo de orden es #${orderId}`}</span>
-                            <span>{` Precio total: ${total}`}</span>
+                            <span className="text-lg font-bold text-red-600">{` Precio total: ${total}`}</span>
                         </div>
                         <div className="w-full mx-auto   shadow-2xl rounded-3xl flex">
                             <div className=" h-auto bg-gray-200 hidden 2xl:block lg:w-5/12 2xl:w-11/12  rounded-l-lg">
@@ -114,7 +121,7 @@ const Checkout = () => {
 
                             </div>
                             <div className="w-full  bg-white p-5 rounded-lg lg:rounded-l-none">
-                                <OrderForm value={{ setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateAll, setPhone }} />
+                                <OrderForm value={{ email, setName, setSurname, setCardNumber, cardNumber, expiry, setExpiry, setCvv, setEmail, updateAll, setPhone }} />
                             </div>
                         </div>
 

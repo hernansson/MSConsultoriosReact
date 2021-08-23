@@ -8,7 +8,7 @@ export default function DropDownProducts() {
     <div className="group inline-block">
       <button
         className=" bg-blue-900  flex items-center  transform hover:scale-125 duration-200">
-        <NavLink to="/Productos"
+        <NavLink to="/"
           className="block md:inline-block text-blue-100 hover:text-blue-500  px-2 py-3 border-b-2 mr-8 border-blue-100 md:border-none text-xl ">Productos</NavLink>
         <span>
           <svg

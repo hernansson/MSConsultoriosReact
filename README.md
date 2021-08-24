@@ -1,4 +1,4 @@
-# Pagina para un consultorio medico con ReactJS, FireBase, Tailwind.
+# Pagina para un consultorio medico con ReactJS, FireBase, Tailwind!
 
 Las noticias del Home  A DEFINIR.
 Log de Users a implementar.

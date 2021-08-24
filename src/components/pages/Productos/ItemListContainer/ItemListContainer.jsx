@@ -74,7 +74,7 @@ export default function ItemListContainer() {
                     <Loading />
                 </div> :
                 <div>
-                    <ItemList productos={productos} />
+                    <ItemList value={{ productos }} />
                 </div>
             }
         </div>

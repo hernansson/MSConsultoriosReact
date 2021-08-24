@@ -62,7 +62,6 @@ const CustomProvider = ({ children }) => {
         const promises = cartItems.flatMap(async cartItem => {
             let hasStock = await isAvailable(cartItem.item.id, cartItem.count)
 
-            console.log(hasStock)
             return hasStock ? cartItem : []
 
         })

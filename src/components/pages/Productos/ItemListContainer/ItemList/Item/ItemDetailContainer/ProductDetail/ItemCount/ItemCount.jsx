@@ -14,7 +14,6 @@ export default function ItemCount({ value }) {
     const addCount = () => {
 
 
-
         count === stock - 1 ? setdisablePlus(true) : null
         count === 0 ? setdisableMinus(false) : null
         setCount(count + 1)

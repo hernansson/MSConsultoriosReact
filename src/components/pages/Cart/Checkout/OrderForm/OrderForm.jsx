@@ -51,7 +51,7 @@ const OrderForm = ({ value }) => {
     }
 
     const handleExpiry2 = (e) => {
-        console.log(expiry)
+
         let cpy = [...expiry]
         cpy[1] = e.target.value
         setExpiry(cpy)

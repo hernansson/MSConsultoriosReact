@@ -5,7 +5,7 @@ const CreditCard = ({ value }) => {
 
 
     const { name, surname, cardNumber, cvv, expiry } = value
-    console.log("EL NAME", cardNumber)
+
 
 
     return (

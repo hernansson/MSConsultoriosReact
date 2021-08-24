@@ -28,7 +28,7 @@ const ItemList = ({ value }) => {
 
     useEffect(() => {
 
-        console.log("entro a filterprods")
+
         const filterProds = () => {
 
             if (filterInput === '') {

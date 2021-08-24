@@ -46,7 +46,7 @@ export default function ItemDetail({ item }) {
 
         setTimeout(() => {
             setShowAdd('hidden')
-        }, 3000)
+        }, 1500)
 
     }
 

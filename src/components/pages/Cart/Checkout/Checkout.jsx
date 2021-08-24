@@ -34,7 +34,7 @@ const Checkout = () => {
         let query = collection.doc(orderId)
         query = query.update({ buyer: { name: name, surname: surname, email: email, phone: phone }, paid: true })
         query.then(() => {
-            console.log("se hizo bien el update")
+
             setIsPaid(true)
         })
 
@@ -78,7 +78,6 @@ const Checkout = () => {
                         setCartItems(doc.data().products)
                         setTotal(doc.data().total)
                         let sum = getCount(doc.data().products)
-                        console.log(sum)
                         setCartCount(sum)
                         setShowLoadingOrder(false)
                     }, 2000)

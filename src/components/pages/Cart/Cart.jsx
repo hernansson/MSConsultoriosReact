@@ -23,7 +23,7 @@ export default function Cart() {
   }, [cartCount])
 
 
-  console.log("EL CONTADOR ES", cartCount)
+
 
 
   return (

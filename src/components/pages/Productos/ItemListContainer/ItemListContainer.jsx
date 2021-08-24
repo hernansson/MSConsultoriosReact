@@ -31,7 +31,7 @@ export default function ItemListContainer() {
                     })
 
                     setTimeout(() => {
-                        console.log(productos)
+
                         fetchStatus.current = true
                         setProductos(productos)
                     }, 2000)
@@ -67,7 +67,7 @@ export default function ItemListContainer() {
     return (
 
         <div>
-            {console.log("el fetch stats en laoding es :", fetchStatus.current)}
+
             {fetchStatus.current === false ?
                 <div className="loading">
 

@@ -51,7 +51,7 @@ const ItemList = ({ value }) => {
 
 
     return (
-        <div className="pt-24">
+        <div className="pt-28">
             <FilterBox value={{ handleFilterInput }} />
             <PriceFilter value={{ setOrderAsc, orderArray, orderAsc }} />
 

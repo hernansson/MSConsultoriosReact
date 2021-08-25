@@ -49,6 +49,7 @@ const Checkout = () => {
             await updateStock()
 
             setCartCount(0)
+            setOrder('')
 
             setCartItems([])
 

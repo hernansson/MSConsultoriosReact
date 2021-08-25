@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import CartWidget from './CartWidget/CartWidget.js'
+import logo from "./img/logo.png"
 import LogIn from './LogIn/LogIn'
 import "./Navbar.css"
 import DropDownProducts from './DropDownProducts/DropdownProducts.jsx'
@@ -22,7 +23,7 @@ export default function NavBar() {
     return (
         <div>
             <nav className="flex  items-center justify-between p-3 bg-blue-900 w-full fixed z-20">
-                <img src="http://acmelogos.com/images/logo-1.svg" alt="ACME" width="120" />
+                <img className="w-32 h-16" src={logo} alt="ACME" />
                 <div className="flex md:hidden">
                     <button id="hamburger">
                         <img className="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png" alt="X"
